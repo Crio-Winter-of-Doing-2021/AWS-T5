@@ -3,6 +3,10 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
+//Connecting Database
+import connectDB from './dbops/dbConnect';
+connectDB();
+
 // defining express app
 const app=express();
 app.use(bodyParser.urlencoded({extended : false}));

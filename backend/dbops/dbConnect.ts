@@ -1,20 +1,20 @@
 import { Pool , Client } from 'pg';
 
-const pool = new Pool({
+const pool: Pool = new Pool({
     user : 'postgres',
     host : 'localhost',
     database : 'postgres',
     password : 'postgres',
     port : 5432,
     max : 50
-})
+});
 
-const connectionstring = "postgresql://postgres:postgres@localhost:5432/postgres";
+const connectionstring: string = "postgresql://postgres:postgres@localhost:5432/postgres";
 
 async function connectDB() {
-    const client = new Client(connectionstring);
+    const client: Client = new Client(connectionstring);
     await client.connect();
-    let res = client.query(
+    let res: any = client.query(
         `CREATE TABLE IF NOT EXISTS scheduler(
             id SERIAL PRIMARY KEY,
             url VARCHAR(2048) NOT NULL,
@@ -27,7 +27,7 @@ async function connectDB() {
                 console.log('Database Connected !!');
             }
             else {
-                console.log('Error : ' + err);
+                console.error('Error : ' + err);
             }
         }
     )

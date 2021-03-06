@@ -1,16 +1,19 @@
-import * as dotenv from "dotenv";
-import path from "path";
 import assert from "assert";
-const envpath: string = (path.join(__dirname, "..", "/.env"));
-dotenv.config({ path: envpath });
+import * as AWScredentialsJSON from "./.AWSCredentials-secrets.json" ;
+/*
+    Sample .AWSCredentials-secrets.json
+    {
+        "accessKeyID": "<string>",                                      
+        "secretAccessKey": "<string>"
+    }
+*/
 
 // Load the SDK and view the APIs offered
 import AWS from "aws-sdk";
 import { Lambda } from  "@aws-sdk/client-lambda";
 // console.log(Object.getOwnPropertyNames(Lambda.prototype)); 
 
-// Create an User with AWSLambdaFullAccess and add the Keys at the dotenv path
-const AWScredentials: any = new AWS.Credentials(process.env.accessKeyID, process.env.secretAccessKey);
+const AWScredentials: any = new AWS.Credentials(AWScredentialsJSON.accessKeyID, AWScredentialsJSON.secretAccessKey);
 
 function parseLambdaARN(ARN: string) {
     try {
@@ -40,27 +43,35 @@ function parseLambdaARN(ARN: string) {
 }
 
 function invokeLambda(ARN: string, Payload: string) {
-    var parsedARN = parseLambdaARN(ARN);
-    
-    const lambda = new Lambda({
-        apiVersion: '2015-03-31',
-        region: parsedARN["region"],
-        credentials: AWScredentials,
-    })
+    try {
+        var parsedARN = parseLambdaARN(ARN);
+        
+        const lambda = new Lambda({
+            apiVersion: '2015-03-31',
+            region: parsedARN["region"],
+            credentials: AWScredentials,
+        })
 
-    var params: any = {
-        FunctionName: parsedARN["functionName"], // Add ARN qualifier here as well
-        InvocationType: "Event", // For Async Calls
-        Payload: Payload,
-    };
+        var invokeParams: any = {
+            FunctionName: parsedARN["functionName"], // Add ARN qualifier here as well
+            InvocationType: "Event", // For Async Calls
+            Payload: Payload,
+        };
 
-    lambda.invoke(params, function(err, data) {
-        if (err) {
-            console.error(err, err.stack); // an error occurred
-        } else {
-            console.log(data);           // successful response
+        if (parsedARN["qualifier"] != "") {
+            invokeParams["Qualifier"] = parsedARN["qualifier"];
         }
-    });
+
+        lambda.invoke(invokeParams, function(err, data) {
+            if (err) {
+                console.error(err, err.stack); // an error occurred
+            } else {
+                console.log(data);           // successful response
+            }
+        });
+    } catch {
+        console.error("The Lambda Function was not invoked properly.");
+    }
 }
 
 export { invokeLambda }

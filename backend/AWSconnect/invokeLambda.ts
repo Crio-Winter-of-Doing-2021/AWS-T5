@@ -1,19 +1,15 @@
-import assert from "assert";
-import * as AWScredentialsJSON from "./.AWSCredentials-secrets.json" ;
-/*
-    Sample .AWSCredentials-secrets.json
-    {
-        "accessKeyID": "<string>",                                      
-        "secretAccessKey": "<string>"
-    }
+/**
+ * FOR ARN passing, requires Credentials for invocation, 
+ * and in the process stores AWS credentials on Your local DB.
+ * But saves the hassle and dangers of an Open HTTP Trigger. 
 */
+
+import assert from "assert";
 
 // Load the SDK and view the APIs offered
 import AWS from "aws-sdk";
 import { Lambda } from  "@aws-sdk/client-lambda";
 // console.log(Object.getOwnPropertyNames(Lambda.prototype)); 
-
-const AWScredentials: any = new AWS.Credentials(AWScredentialsJSON.accessKeyID, AWScredentialsJSON.secretAccessKey);
 
 function parseLambdaARN(ARN: string) {
     try {
@@ -42,10 +38,13 @@ function parseLambdaARN(ARN: string) {
     }
 }
 
-function invokeLambda(ARN: string, Payload: string) {
+function invokeLambda(ARN: string, Payload: string, accessKeyID: string, secretAccessKey: string ) {
     try {
+        assert(accessKeyID.length >= 16 && accessKeyID.length <= 128);
+        // https://docs.aws.amazon.com/IAM/latest/APIReference/API_AccessKey.html
+        const AWScredentials: any = new AWS.Credentials(accessKeyID, secretAccessKey);
         var parsedARN = parseLambdaARN(ARN);
-        
+
         const lambda = new Lambda({
             apiVersion: '2015-03-31',
             region: parsedARN["region"],

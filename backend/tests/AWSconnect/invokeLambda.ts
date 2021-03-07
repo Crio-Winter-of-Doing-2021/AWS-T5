@@ -1,3 +1,10 @@
-import { invokeLambda } from "../../AWSconnect/invokeLambda";
-invokeLambda("arn:aws:lambda:us-east-2:977476:function:hello-test", "", "accessKeyID", "secretAccessKey");
+import AWSLambdaScheduler from '../../AWSLambdaScheduler';
+const Scheduler = new AWSLambdaScheduler();
+let invokedata= {
+    ARN : "arn:aws:lambda:us-east-2:977476:function:hello-test",
+    Payload : "",
+    accessKeyID : "accessKeyID",
+    secretAccessKey : "secretAccessKey"
+}
+Scheduler.invokeLambda(invokedata);
 // Check for a Resource Not Found. To test properly, plug in the Keys.

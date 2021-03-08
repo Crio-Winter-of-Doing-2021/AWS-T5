@@ -8,7 +8,7 @@ async function dbInit() {
         let res: any = client.query(
             `CREATE TABLE IF NOT EXISTS scheduler(
                 id SERIAL PRIMARY KEY,
-                url VARCHAR(2048) NOT NULL,
+                URLorARN VARCHAR(2048) NOT NULL,
                 status VARCHAR(128) NOT NULL,
                 accessKeyID VARCHAR(128) NOT NULL,
                 secretAccessKey VARCHAR(2048) NOT NULL,

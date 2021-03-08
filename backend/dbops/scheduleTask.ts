@@ -1,13 +1,13 @@
 import { Client } from "pg";
 import { connectionstring } from "./connectDB";
 
-async function scheduleTask(triggerURL: string, invoke_time: string, accessKeyID: string = "", secretAccessKey: string ="") {
+async function scheduleTask(triggerURLOrARN: string, invoke_time: string, accessKeyID: string = "", secretAccessKey: string ="") {
     try {
         const client: Client = new Client(connectionstring);
         await client.connect();
         let ret: any = client.query(
-            `INSERT INTO scheduler(url, status, invoke_time, accessKeyID, secretAccessKey) 
-            VALUES('${triggerURL}', 'Scheduled', '${invoke_time}', '${accessKeyID}', '${secretAccessKey}')
+            `INSERT INTO scheduler(URLorARN, status, invoke_time, accessKeyID, secretAccessKey) 
+            VALUES('${triggerURLOrARN}', 'Scheduled', '${invoke_time}', '${accessKeyID}', '${secretAccessKey}')
             RETURNING id;
             `).then(res => {
                 return res.rows[0];

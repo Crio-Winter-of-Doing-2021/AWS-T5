@@ -5,7 +5,7 @@ async function dbInit() {
     try {
         const client: Client = new Client(connectionstring);
         await client.connect();
-        let res: any = client.query(
+        const res: any = client.query(
             `CREATE TABLE IF NOT EXISTS scheduler(
                 id SERIAL PRIMARY KEY,
                 URLorARN VARCHAR(2048) NOT NULL,
@@ -28,4 +28,5 @@ async function dbInit() {
         console.error("Table not initialized properly");
     }
 }
+dbInit();
 export { dbInit };

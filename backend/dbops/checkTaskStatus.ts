@@ -5,7 +5,7 @@ async function checkTaskStatus(taskID: string) {
     try {
         const client: Client = new Client(connectionstring);
         await client.connect();
-        let ret: any = client.query(
+        const ret: any = client.query(
             `SELECT status FROM scheduler
             WHERE id = '${taskID}';
             `).then(res => {

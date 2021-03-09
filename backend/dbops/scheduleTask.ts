@@ -5,7 +5,7 @@ async function scheduleTask(triggerURLOrARN: string, invoke_time: string, access
     try {
         const client: Client = new Client(connectionstring);
         await client.connect();
-        let ret: any = client.query(
+        const ret: any = client.query(
             `INSERT INTO scheduler(URLorARN, status, invoke_time, accessKeyID, secretAccessKey) 
             VALUES('${triggerURLOrARN}', 'Scheduled', '${invoke_time}', '${accessKeyID}', '${secretAccessKey}')
             RETURNING id;

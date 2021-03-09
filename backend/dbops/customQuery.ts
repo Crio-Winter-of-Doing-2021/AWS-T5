@@ -5,7 +5,7 @@ async function customQuery(query: string) {
     try {
         const client: Client = new Client(connectionstring);
         await client.connect();
-        let ret: any = client.query(
+        const ret: any = client.query(
             `${query}
             `).then(res => {
                 return res;

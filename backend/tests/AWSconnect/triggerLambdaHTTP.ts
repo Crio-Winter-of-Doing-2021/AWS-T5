@@ -1,6 +1,6 @@
 import AWSLambdaScheduler from '../../AWSLambdaScheduler';
 const Scheduler = new AWSLambdaScheduler();
-let triggerdata= {
+const triggerdata= {
     triggerURL : "https://znhvn9olqk.execute-api.us-east-2.amazonaws.com/default/hello-test",
     payloadData : {}
 }

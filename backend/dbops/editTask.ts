@@ -5,7 +5,7 @@ async function editInvokeTime(taskID: string, newInvokeTime: string) {
     try {
         const client: Client = new Client(connectionstring);
         await client.connect();
-        let ret: any = client.query(
+        const ret: any = client.query(
             `UPDATE scheduler
             SET invoke_time = '${newInvokeTime}'
             WHERE id = '${taskID}';

@@ -11,7 +11,7 @@ import { hostname } from 'os';
 function parseTriggerURL(triggerURL: string) {
     // automatically upgrades to HTTPS URL, if need be, since AWS will comply
 
-    var pattern: RegExp = /^((http|https):\/\/)/;
+    const pattern: RegExp = /^((http|https):\/\/)/;
     if(!pattern.test(triggerURL)) {
         triggerURL = "https://" + triggerURL;
     }

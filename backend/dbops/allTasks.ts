@@ -5,7 +5,7 @@ async function allTasks() {
     try {
         const client: Client = new Client(connectionstring);
         await client.connect();
-        let ret: any = client.query(
+        const ret: any = client.query(
             `SELECT * FROM scheduler;
             `).then(res => {
                 return res.rows;

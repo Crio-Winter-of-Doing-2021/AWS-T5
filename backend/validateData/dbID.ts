@@ -4,7 +4,7 @@ async function dbID(taskID: string) {
     try {
         const pattern: RegExp = /[\d]+/;
         if (pattern.test(taskID)) {
-            let ret = await taskByID(taskID)
+            const ret = await taskByID(taskID)
                 .then(res => {
                     if (res.length > 0) {
                         return true;

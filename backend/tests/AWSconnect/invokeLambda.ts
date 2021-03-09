@@ -1,6 +1,6 @@
 import AWSLambdaScheduler from '../../AWSLambdaScheduler';
 const Scheduler = new AWSLambdaScheduler();
-let invokedata= {
+const invokedata= {
     ARN : "arn:aws:lambda:us-east-2:977476:function:hello-test",
     Payload : "",
     accessKeyID : "accessKeyID",

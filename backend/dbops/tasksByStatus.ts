@@ -7,7 +7,8 @@ async function tasksByStatus(statusToCheck: string) {
         await client.connect();
         const ret: any = client.query(
             `SELECT * FROM scheduler
-            WHERE status = '${statusToCheck}';
+            WHERE status = '${statusToCheck}'
+            ORDER BY invoke_time ASC;
             `).then(res => {
                 return res.rows;
             }).catch(err => console.log("Query Error" + err));

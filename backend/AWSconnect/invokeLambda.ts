@@ -61,7 +61,7 @@ function invokeLambda(ARN: string, Payload: string, accessKeyID: string, secretA
             invokeParams["Qualifier"] = parsedARN["qualifier"];
         }
 
-        lambda.invoke(invokeParams, function(err, data) {
+        lambda.invoke(invokeParams, function(err:any, data:any) {
             if (err) {
                 console.error(err, err.stack); // an error occurred
             } else {

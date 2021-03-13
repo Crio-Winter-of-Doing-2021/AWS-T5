@@ -1,5 +1,6 @@
 import { invokeLambda } from './AWSconnect/invokeLambda';
 import { triggerLambda } from './AWSconnect/triggerLambdaHTTP';
+import {dbInit} from './dbops/dbInit';
 interface invokeLambdaInterface {
     ARN: string,
     Payload: string,
@@ -11,8 +12,11 @@ interface triggerLambdaInterface {
     payloadData: any
 }
 interface scheduleInterface {
-    taskURL: string,
-    time : number
+    triggerURL?: string,
+    invoke_time : string,
+    ARN? : string,
+    accessKeyID?: string,
+    secretAccessKey?: string
 }
 interface cancelInterface {
     taskID : number
@@ -28,7 +32,9 @@ interface taskInstancesInterface {
     taskStatus : string
 }
 class AWSLambdaScheduler {
-    
+    constructor() {
+        dbInit();
+    }
     invokeLambda(obj: invokeLambdaInterface) {
         invokeLambda(obj.ARN,obj.Payload,obj.accessKeyID,obj.secretAccessKey);
     }

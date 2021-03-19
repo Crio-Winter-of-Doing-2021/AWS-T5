@@ -9,7 +9,7 @@ interface invokeLambdaInterface {
 }
 interface triggerLambdaInterface {
     triggerURL: string,
-    payloadData: any
+    payloadData: Record<string, unknown>
 }
 interface scheduleInterface {
     triggerURL?: string,

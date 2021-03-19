@@ -1,8 +1,8 @@
 import { taskByID } from "../dbops/taskById";
 
-async function dbID(taskID: string) {
+async function dbID(taskID: string) : Promise<boolean | void> {
     try {
-        const pattern: RegExp = /[\d]+/;
+        const pattern = /[\d]+/;
         if (pattern.test(taskID)) {
             const ret = await taskByID(taskID)
                 .then(res => {
@@ -12,7 +12,7 @@ async function dbID(taskID: string) {
                         return false;
                     }
                 }).
-                catch(err => console.error("Task ID not queried properly"));
+                catch(err => console.error("Task ID not queried properly", err));
             return ret;
         } else {
             return false;

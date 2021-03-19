@@ -1,14 +1,14 @@
 import { tasksByStatus } from './../dbops/tasksByStatus';
 import { statusValidate } from './../validateData/status';
 
-async function retrieveTaskInstances(taskStatus :string) {
+async function retrieveTaskInstances(taskStatus :string) : Promise<boolean | void> {
     if(!statusValidate(taskStatus))
     {
         console.log('Status Invalid');
         return false;
     }
     try {
-        let res = await tasksByStatus(taskStatus);
+        const res = await tasksByStatus(taskStatus);
         return res;
     }
     catch(err) {

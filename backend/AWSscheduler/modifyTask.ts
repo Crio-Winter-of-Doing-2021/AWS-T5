@@ -15,7 +15,7 @@ async function modifyTask(id : string,new_invoketime : string) {
         return false;
     }
     try {
-        let res = await editInvokeTime(id,new_invoketime);
+        const res = await editInvokeTime(id,new_invoketime);
         return res;
     }
     catch(err) {

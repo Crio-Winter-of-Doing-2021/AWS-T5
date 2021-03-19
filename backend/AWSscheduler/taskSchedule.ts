@@ -5,7 +5,7 @@ import { timestampValidate } from './../validateData/timestamp';
 import { triggerURLValidate } from './../validateData/triggerURL';
 import { runTask } from './runTask';
 
-async function taskSchedule(triggerURLOrARN: string, invoke_time: string, acecssKeyID: string = "", secretAccessKey: string ="") {
+async function taskSchedule(triggerURLOrARN: string, invoke_time: string, acecssKeyID = "", secretAccessKey = ""): Promise<boolean> {
     
     if(!timestampValidate(invoke_time))
     {
@@ -34,7 +34,7 @@ async function taskSchedule(triggerURLOrARN: string, invoke_time: string, acecss
         }
     }
     try {
-        let id = scheduleTask(triggerURLOrARN,invoke_time,acecssKeyID,secretAccessKey).then(res => {
+        const id = scheduleTask(triggerURLOrARN,invoke_time,acecssKeyID,secretAccessKey).then(res => {
             runTask();
             return res;
         });

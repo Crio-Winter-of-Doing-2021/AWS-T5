@@ -5,9 +5,9 @@ import {editStatus} from './../dbops/editTask';
 
 
 async function runTask() {
-    let latest = await latestTask();
-    let time= new Date(latest.invoke_time);
-    let rule=new RecurrenceRule();
+    const latest = await latestTask();
+    const time= new Date(latest.invoke_time);
+    const rule=new RecurrenceRule();
     rule.date=time.getDate();
     rule.month=time.getMonth();
     rule.year=time.getFullYear();
@@ -16,7 +16,7 @@ async function runTask() {
     rule.second = time.getSeconds();
     console.log(time);
 
-    let job=scheduleJob(rule,async () => {
+    const job = scheduleJob(rule,async () => {
         try {
             await editStatus(latest.id,'Running');
             console.log('Job running .. URL = '+latest.urlorarn);
@@ -26,7 +26,7 @@ async function runTask() {
             editStatus(latest.id,'Failed');
             console.log("Error : "+err);
         }
-    })
+    });
     
 }
 runTask();

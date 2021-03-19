@@ -1,4 +1,4 @@
-function statusValidate(status: string) {
+function statusValidate(status: string) : boolean | void {
     try {
         // https://learn.crio.do/home/me/ME_CWOD_AWS_TASK/ME_CWOD_AWS_TASK_MODULE_BASIC
         const availableStatus: string[] = ["Scheduled", "Running", "Completed", "Failed", "Cancelled"];

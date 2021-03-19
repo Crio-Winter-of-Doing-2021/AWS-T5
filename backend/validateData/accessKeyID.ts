@@ -1,7 +1,7 @@
-function accessKeyIDValidate(accessKeyID: string) {
+function accessKeyIDValidate(accessKeyID: string) : boolean | void {
     try {
         // https://docs.aws.amazon.com/IAM/latest/APIReference/API_AccessKey.html
-        var pattern: RegExp = /^[\w]{16,128}$/;
+        const pattern = /^[\w]{16,128}$/;
         if (pattern.test(accessKeyID)) {
             return true;
         } else {

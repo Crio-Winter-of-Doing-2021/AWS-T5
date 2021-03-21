@@ -6,7 +6,8 @@ async function allTasks() {
         const client: Client = new Client(connectionstring);
         await client.connect();
         const ret: any = client.query(
-            `SELECT * FROM scheduler;
+            `SELECT * FROM scheduler
+            ORDER BY id ASC;
             `).then(res => {
                 return res.rows;
             }).catch(err => console.log("Query Error" + err));

@@ -8,11 +8,10 @@ async function retrieveTaskInstances(taskStatus :string) : Promise<boolean | voi
         return false;
     }
     try {
-        const res = await tasksByStatus(taskStatus);
-        return res;
+        return await tasksByStatus(taskStatus);
     }
     catch(err) {
-        console.log('Error : '+err);
+        console.error('Error : ' + err);
     }
 }
 

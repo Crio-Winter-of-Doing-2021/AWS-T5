@@ -19,7 +19,7 @@ function parseLambdaARN(ARN: string) {
         const region: string = ARNComponents[3];
         const accountID: string = ARNComponents[4]; // might need for validating credentials
         let functionName: string = ARNComponents[6];
-        let qualifier: string = "";
+        let qualifier = "";
         if (ARNComponents.length == 8) {
             qualifier = ARNComponents[7];
         } else if (functionName.includes("/")) {

@@ -1,8 +1,8 @@
 import { invokeLambda } from '../../AWSconnect/invokeLambda';
 const invokedata= {
-    ARN : "arn:aws:lambda:us-east-2:977476:function:hello-test",
+    ARN : "arn:aws:lambda:us-east-2:977476:function:hello-test/1",
     Payload : "",
-    accessKeyID : "accessKeyID",
+    accessKeyID : "accessKeyMake16OrMoreID",
     secretAccessKey : "secretAccessKey"
 }
 invokeLambda(invokedata.ARN, invokedata.Payload, invokedata.accessKeyID, invokedata.secretAccessKey);

@@ -1,8 +1,13 @@
 import { tasksByStatus } from './../dbops/tasksByStatus';
 
 async function latestTask() {
-    let latest = await tasksByStatus('Scheduled');
-    return latest[0];
+    return tasksByStatus('Scheduled')
+    .then( res => {
+        return res[0];
+    })
+    .catch( err => {
+        console.log(err);
+    })
 }
 
 export { latestTask };

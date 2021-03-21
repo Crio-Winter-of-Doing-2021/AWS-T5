@@ -2,8 +2,7 @@ import { allTasks } from './../dbops/allTasks';
 
 async function retrieveAllTasks(): Promise<unknown> {
     try {
-        const res = await allTasks();
-        return res;
+        return allTasks();
     }
     catch(err) {
         console.log("Error : " + err);

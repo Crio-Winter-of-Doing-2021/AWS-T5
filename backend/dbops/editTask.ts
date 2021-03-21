@@ -1,11 +1,11 @@
 import { Client } from "pg";
 import { connectionstring } from "./connectDB";
 
-async function editInvokeTime(taskID: string, newInvokeTime: string) {
+async function editInvokeTime(taskID: string, newInvokeTime: string) : Promise<boolean> {
     try {
         const client: Client = new Client(connectionstring);
         await client.connect();
-        const ret: any = client.query(
+        const ret = client.query(
             `UPDATE scheduler
             SET invoke_time = '${newInvokeTime}'
             WHERE id = '${taskID}';
@@ -17,14 +17,15 @@ async function editInvokeTime(taskID: string, newInvokeTime: string) {
         return ret;
     } catch (err) {
         console.error("Task not edited properly", err);
+        return false;
     }
 }
 
-async function editStatus(taskID: string, newStatus: string) {
+async function editStatus(taskID: string, newStatus: string) : Promise<boolean> {
     try {
         const client: Client = new Client(connectionstring);
         await client.connect();
-        let ret: any = client.query(
+        const ret= client.query(
             `UPDATE scheduler
             SET status = '${newStatus}'
             WHERE id = '${taskID}';
@@ -36,6 +37,7 @@ async function editStatus(taskID: string, newStatus: string) {
         return ret;
     } catch (err) {
         console.error("Task not edited properly", err);
+        return false;
     }
 }
 

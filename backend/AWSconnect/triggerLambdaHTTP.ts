@@ -6,18 +6,20 @@
 
 
 import https from 'https';
-import { hostname } from 'os';
 
-function parseTriggerURL(triggerURL: string) {
+function parseTriggerURL(triggerURL: string): {
+    hostname: string;
+    path: string;
+} {
     // automatically upgrades to HTTPS URL, if need be, since AWS will comply
 
-    const pattern: RegExp = /^((http|https):\/\/)/;
+    const pattern = /^((http|https):\/\/)/;
     if(!pattern.test(triggerURL)) {
         triggerURL = "https://" + triggerURL;
     }
     const splitURL: string[] = triggerURL.split('/');
     const hostname: string = splitURL[2];
-    var urlPath: string = "/";
+    let urlPath = "/";
     if (splitURL.length > 2) { 
         urlPath += splitURL.slice(3, splitURL.length).join('/');
     }
@@ -28,7 +30,7 @@ function parseTriggerURL(triggerURL: string) {
     }
 }
 
-function triggerLambda(triggerURL: string, payloadData: any) {
+function triggerLambda(triggerURL: string, payloadData : unknown ): void {
     try {
         const payload = JSON.stringify(payloadData);
         const URLComponents = parseTriggerURL(triggerURL);

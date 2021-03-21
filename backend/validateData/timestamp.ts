@@ -6,7 +6,7 @@ function timestampValidate(timestamp: string) : boolean | void {
             const providedTime: Date = new Date(timestamp);
             const now: Date = new Date();
             const timeDifference: number = providedTime.getTime() - now.getTime();
-            console.log(timeDifference);
+            // console.log(timeDifference);
             if (timeDifference >= 0) {
                 return true;
             } else {

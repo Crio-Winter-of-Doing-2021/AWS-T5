@@ -1,27 +1,44 @@
-import { editInvokeTime } from './../dbops/editTask';
+import { editInvokeTime, editStatus } from './../dbops/editTask';
 import { dbID } from './../validateData/dbID';
 import { timestampValidate } from './../validateData/timestamp'
+import { statusValidate } from '../validateData/status'
 
-
-async function modifyTask(id : string,new_invoketime : string) {
-    if(!dbID(id))
-    {
-        console.log('Invalid ID');
+async function modifyTaskTime(id : string, new_invoketime : string) : Promise<boolean> {
+    return dbID(id)
+    .then(res => {
+        if (res && timestampValidate(new_invoketime)) {
+            return editInvokeTime(id, new_invoketime)
+            .then( ress => {
+                return ress;
+            })
+        } else {
+            console.error("Invalid Parameters");
+            return false;
+        }
+    })
+    .catch(err => {
+        console.error("Error : "+err);
         return false;
-    }
-    if(!timestampValidate(new_invoketime))
-    {
-        console.log('Invalid New Invoke Time');
-        return false;
-    }
-    try {
-        const res = await editInvokeTime(id,new_invoketime);
-        return res;
-    }
-    catch(err) {
-        console.log("Error : "+err);
-        return false;
-    }
+    });
 }
 
-export { modifyTask };
+async function modifyTaskStatus(id : string, status : string) : Promise<boolean> {
+    return dbID(id)
+    .then(res => {
+        if (res && statusValidate(status)) {
+            return editStatus(id, status)
+            .then( ress => {
+                return ress;
+            })
+        } else {
+            console.error("Invalid Parameters");
+            return false;
+        }
+    })
+    .catch(err => {
+        console.error("Error : "+err);
+        return false;
+    });
+}
+
+export { modifyTaskTime, modifyTaskStatus };

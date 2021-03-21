@@ -34,11 +34,11 @@ async function taskSchedule(triggerURLOrARN: string, invoke_time: string, acecss
         }
     }
     try {
-        const id = scheduleTask(triggerURLOrARN,invoke_time,acecssKeyID,secretAccessKey).then(res => {
+        const id = scheduleTask(triggerURLOrARN, invoke_time, acecssKeyID, secretAccessKey)
+        .then(res => {
             runTask();
             return res;
         });
-        // await runTask();
         return id;
     }
     catch(err) {

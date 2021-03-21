@@ -19,13 +19,13 @@ interface scheduleInterface {
     secretAccessKey?: string
 }
 interface cancelInterface {
-    taskID : number
+    taskID : string
 }
 interface checkStatusInterface {
-    taskID : number
+    taskID : string
 }
 interface modifyInterface {
-    taskID : number,
+    taskID : string,
     time : number
 }
 interface taskInstancesInterface {

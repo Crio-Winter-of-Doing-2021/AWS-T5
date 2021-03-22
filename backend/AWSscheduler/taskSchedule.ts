@@ -5,8 +5,18 @@ import { timestampValidate } from './../validateData/timestamp';
 import { triggerURLValidate } from './../validateData/triggerURL';
 import { runTask } from './runTask';
 
-async function taskSchedule(triggerURLOrARN: string, invoke_time: string, acecssKeyID = "", secretAccessKey = ""): Promise<boolean> {
+async function taskSchedule(triggerURLOrARN: string, delay: number, acecssKeyID = "", secretAccessKey = ""): Promise<boolean> {
     
+    delay = Math.floor(delay);
+    if(delay <= 0) {
+        console.log('Invalid Time');
+        return false;
+    }
+    const curr_Date: Date = new Date();
+    curr_Date.setMilliseconds(curr_Date.getMilliseconds() + delay);
+    const invoke_time: string = curr_Date.toISOString();
+    // console.log(invoke_time);
+
     if(!timestampValidate(invoke_time))
     {
         console.log('Invalid Time');

@@ -1,7 +1,7 @@
-import { editInvokeTime, editStatus } from './../dbops/editTask';
-import { dbID } from './../validateData/dbID';
-import { timestampValidate } from './../validateData/timestamp'
-import { statusValidate } from '../validateData/status'
+import { editInvokeTime, editStatus } from '@dbops/editTask';
+import { dbID } from '@validateData/dbID';
+import { timestampValidate } from '@validateData/timestamp'
+import { statusValidate } from '@validateData/status'
 
 async function modifyTaskTime(id : string, new_invoketime : string) : Promise<boolean> {
     return dbID(id)

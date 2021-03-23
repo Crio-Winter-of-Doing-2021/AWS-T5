@@ -1,4 +1,4 @@
-import { scheduleTask } from "../../dbops/scheduleTask";
+import { scheduleTask } from "@dbops/scheduleTask";
 scheduleTask("https://znhvn9olqk.execute-api.us-east-2.amazonaws.com/default/hello-test", "2021-09-22T14:01:54.9571247Z")
 .then(res => console.log(res))
 .catch(err => console.error(err)); 

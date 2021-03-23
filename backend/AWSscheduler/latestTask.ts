@@ -1,4 +1,4 @@
-import { tasksByStatus } from './../dbops/tasksByStatus';
+import { tasksByStatus } from '@dbops/tasksByStatus';
 
 async function latestTask() {
     return tasksByStatus('Scheduled')

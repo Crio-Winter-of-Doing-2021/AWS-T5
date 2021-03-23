@@ -1,4 +1,4 @@
-import { invokeLambda } from '../../AWSconnect/invokeLambda';
+import { invokeLambda } from '@AWSconnect/invokeLambda';
 const invokedata= {
     ARN : "arn:aws:lambda:us-east-2:977476:function:hello-test/1",
     Payload : "",

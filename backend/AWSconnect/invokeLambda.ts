@@ -26,7 +26,7 @@ function parseLambdaARN(ARN: string) {
             qualifier = functionName.split("/")[1];
             functionName = functionName.split("/")[0];
         }
-        let retComponents: any = {
+        const retComponents = {
             "region": region,
             "accountID": accountID,
             "functionName": functionName,
@@ -35,14 +35,20 @@ function parseLambdaARN(ARN: string) {
         return retComponents;
     } catch {
         console.error("ARN not suitably parsed");
+        return {
+            "region": "",
+            "accountID": "",
+            "functionName": "",
+            "qualifier": "",
+        };
     }
 }
 
-function invokeLambda(ARN: string, Payload: string, accessKeyID: string, secretAccessKey: string ) {
+function invokeLambda(ARN: string, Payload: string, accessKeyID: string, secretAccessKey: string ): void {
     try {
         assert(accessKeyID.length >= 16 && accessKeyID.length <= 128);
         // https://docs.aws.amazon.com/IAM/latest/APIReference/API_AccessKey.html
-        const AWScredentials: any = new AWS.Credentials(accessKeyID, secretAccessKey);
+        const AWScredentials = new AWS.Credentials(accessKeyID, secretAccessKey);
         const parsedARN = parseLambdaARN(ARN);
 
         const lambda = new Lambda({

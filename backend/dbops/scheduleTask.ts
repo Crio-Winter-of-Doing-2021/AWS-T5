@@ -1,11 +1,11 @@
 import { Client } from "pg";
-import { connectionstring } from "./connectDB";
+import { connectionstring } from "@dbops/connectDB";
 
-async function scheduleTask(triggerURLOrARN: string, invoke_time: string, accessKeyID: string = "", secretAccessKey: string ="") {
+async function scheduleTask(triggerURLOrARN: string, invoke_time: string, accessKeyID = "", secretAccessKey ="") {
     try {
         const client: Client = new Client(connectionstring);
         await client.connect();
-        const ret: any = client.query(
+        const ret = client.query(
             `INSERT INTO scheduler(URLorARN, status, invoke_time, accessKeyID, secretAccessKey) 
             VALUES('${triggerURLOrARN}', 'Scheduled', '${invoke_time}', '${accessKeyID}', '${secretAccessKey}')
             RETURNING id;

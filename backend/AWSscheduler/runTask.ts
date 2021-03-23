@@ -1,6 +1,6 @@
-import {latestTask} from './latestTask';
+import {latestTask} from '@AWSscheduler/latestTask';
 import {scheduleJob, RecurrenceRule} from 'node-schedule';
-import {editStatus} from './../dbops/editTask';
+import {editStatus} from '@dbops/editTask';
 
 async function runTask() : Promise<void> {
     latestTask()

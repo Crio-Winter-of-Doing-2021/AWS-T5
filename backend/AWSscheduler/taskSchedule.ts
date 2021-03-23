@@ -1,9 +1,9 @@
-import { scheduleTask } from './../dbops/scheduleTask';
-import { ARNValidate } from './../validateData/ARN';
-import { accessKeyIDValidate } from './../validateData/accessKeyID';
-import { timestampValidate } from './../validateData/timestamp';
-import { triggerURLValidate } from './../validateData/triggerURL';
-import { runTask } from './runTask';
+import { scheduleTask } from '@dbops/scheduleTask';
+import { ARNValidate } from '@validateData/ARN';
+import { accessKeyIDValidate } from '@validateData/accessKeyID';
+import { timestampValidate } from '@validateData/timestamp';
+import { triggerURLValidate } from '@validateData/triggerURL';
+import { runTask } from '@AWSscheduler/runTask';
 
 async function taskSchedule(triggerURLOrARN: string, delay: number, acecssKeyID = "", secretAccessKey = ""): Promise<boolean> {
     

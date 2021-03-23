@@ -1,4 +1,4 @@
-import { cancelTask } from '../../AWSscheduler/cancelTask';
+import { cancelTask } from '@AWSscheduler/cancelTask';
 
 async function cancelTest() {
     await cancelTask('1')

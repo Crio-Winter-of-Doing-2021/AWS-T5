@@ -1,4 +1,4 @@
-import { dbID } from "../../validateData/dbID";
+import { dbID } from "@validateData/dbID";
 dbID("5").then(res => console.log(res == true));
 dbID("sajoaf").then(res => console.log(res == false));
 dbID("4623456").then(res => console.log(res == false)); 

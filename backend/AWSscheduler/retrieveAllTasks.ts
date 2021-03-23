@@ -1,4 +1,4 @@
-import { allTasks } from './../dbops/allTasks';
+import { allTasks } from '@dbops/allTasks';
 
 async function retrieveAllTasks(): Promise<unknown> {
     try {

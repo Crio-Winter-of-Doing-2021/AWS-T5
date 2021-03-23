@@ -1,4 +1,4 @@
-import {taskSchedule} from '../../AWSscheduler/taskSchedule';
+import {taskSchedule} from '@AWSscheduler/taskSchedule';
 
 async function triggerTest() {
     await taskSchedule('www.facebook.com', 100000)

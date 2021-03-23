@@ -1,4 +1,4 @@
-import { latestTask } from '../../AWSscheduler/latestTask';
+import { latestTask } from '@AWSscheduler/latestTask';
 
 async function latestTaskTest() {
     await latestTask()

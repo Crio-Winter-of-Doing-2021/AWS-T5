@@ -5,7 +5,7 @@
  */
 
 
-import https from 'https';
+import * as https from 'https';
 
 function parseTriggerURL(triggerURL: string): {
     hostname: string;

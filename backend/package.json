@@ -25,6 +25,7 @@
     "@aws-sdk/client-lambda": "^3.7.0",
     "assert": "^2.0.0",
     "aws-sdk": "^2.857.0",
+    "https": "^1.0.0",
     "node-schedule": "^2.0.0",
     "pg": "^8.5.1"
   }

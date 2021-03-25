@@ -12,7 +12,8 @@ async function dbInit() {
                 status VARCHAR(128) NOT NULL,
                 accessKeyID VARCHAR(128) NOT NULL,
                 secretAccessKey VARCHAR(2048) NOT NULL,
-                invoke_time TIMESTAMP DEFAULT NOW()
+                invoke_time TIMESTAMP DEFAULT NOW(), 
+                payload varchar(10000) DEFAULT ''
                 );
             `,(err,res) => {
                 if(res)

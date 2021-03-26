@@ -1,8 +1,6 @@
-import { dbInit } from "../dbops/dbInit";
 import { runNext } from "./runNext";
 
 async function schedulerServerInit() {
-    dbInit()
     .then(async res => {
         const startTime = new Date().getTime();
         const timeGap = 30000;

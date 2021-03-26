@@ -1,5 +1,5 @@
-import {editStatus} from '@dbops/editTask';
-import {dbID} from '@validateData/dbID'
+import {editStatus} from '../dbops/editTask';
+import {dbID} from '../validateData/dbID'
 
 
 async function cancelTask(id : string) : Promise<boolean> {

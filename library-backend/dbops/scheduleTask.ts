@@ -1,5 +1,5 @@
 import { Client } from "pg";
-import { connectionstring } from "@dbops/connectDB";
+import { connectionstring } from "./connectDB";
 
 async function scheduleTask(triggerURLOrARN: string, invoke_time: string, accessKeyID = "", secretAccessKey = "", payload = "") {
     try {

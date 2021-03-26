@@ -1,4 +1,4 @@
-import { modifyTaskStatus, modifyTaskTime } from '@AWSscheduler/modifyTask';
+import { modifyTaskStatus, modifyTaskTime } from '../../AWSscheduler/modifyTask';
 
 async function modifyStatusTest(id: string, status: string) : Promise<void>{
     await modifyTaskStatus(id, status)

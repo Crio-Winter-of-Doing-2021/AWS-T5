@@ -1,11 +1,11 @@
 import { Client } from "pg";
-import { connectionstring } from "@dbops/connectDB";
+import { connectionstring } from "../dbops/connectDB";
 
 async function checkTaskStatus(taskID: string) {
     try {
         const client: Client = new Client(connectionstring);
         await client.connect();
-        const ret: any = client.query(
+        const ret = client.query(
             `SELECT status FROM scheduler
             WHERE id = '${taskID}';
             `).then(res => {

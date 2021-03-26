@@ -1,4 +1,4 @@
-import { triggerLambda } from "@AWSconnect/triggerLambdaHTTP";
+import { triggerLambda } from "../../AWSconnect/triggerLambdaHTTP";
 const triggerdata= {
     triggerURL : "https://znhvn9olqk.execute-api.us-east-2.amazonaws.com/default/hello-test",
     payloadData : {}

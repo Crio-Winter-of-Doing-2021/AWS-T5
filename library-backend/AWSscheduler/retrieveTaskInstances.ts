@@ -1,7 +1,7 @@
-import { tasksByStatus } from '@dbops/tasksByStatus';
-import { statusValidate } from '@validateData/status';
+import { tasksByStatus } from '../dbops/tasksByStatus';
+import { statusValidate } from '../validateData/status';
 
-async function retrieveTaskInstances(taskStatus :string) : Promise<boolean | void> {
+async function retrieveTaskInstances(taskStatus :string) {
     if(!statusValidate(taskStatus))
     {
         console.log('Status Invalid');

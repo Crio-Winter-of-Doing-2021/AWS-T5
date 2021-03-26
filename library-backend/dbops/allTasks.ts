@@ -1,5 +1,5 @@
 import { Client } from "pg";
-import { connectionstring } from "@dbops/connectDB";
+import { connectionstring } from "../dbops/connectDB";
 
 async function allTasks() {
     try {

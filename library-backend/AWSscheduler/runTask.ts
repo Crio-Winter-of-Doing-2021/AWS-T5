@@ -8,7 +8,7 @@ import * as fs from 'fs';
 async function runTask(taskID: string) : Promise<void> {
     try {
         const responseFilePath = "../triggerResponse.txt";
-        const invokeSuccessPath = "../../invokeSuccess.txt";
+        const invokeSuccessPath = "../invokeSuccess.txt";
         dbID(taskID)
         .then(res => {
             if(res) {

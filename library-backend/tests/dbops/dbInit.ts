@@ -1,2 +1,2 @@
-import { dbInit } from "@dbops/dbInit";
+import { dbInit } from "../../dbops/dbInit";
 dbInit();

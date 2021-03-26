@@ -1,4 +1,4 @@
-import { retrieveTaskInstances } from "@AWSscheduler/retrieveTaskInstances"
+import { retrieveTaskInstances } from "../../AWSscheduler/retrieveTaskInstances"
 
 retrieveTaskInstances("Cancelled")
 .then(res => console.log(res))

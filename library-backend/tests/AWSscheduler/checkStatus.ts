@@ -1,4 +1,4 @@
-import { checkStatus } from '@AWSscheduler/checkStatus';
+import { checkStatus } from '../../AWSscheduler/checkStatus';
 
 async function cancelTest() {
     await checkStatus('1')

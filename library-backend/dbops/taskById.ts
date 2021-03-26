@@ -1,5 +1,5 @@
 import { Client } from "pg";
-import { connectionstring } from "@dbops/connectDB";
+import { connectionstring } from "./connectDB";
 
 async function taskByID(taskID: string) {
     try {
@@ -10,10 +10,14 @@ async function taskByID(taskID: string) {
             WHERE id = '${taskID}';
             `).then(res => {
                 return res.rows;
-            }).catch(err => console.log("Query Error" + err));
+            }).catch(err => {
+                console.log("Query Error" + err); 
+                return []
+            });
         return ret;
     } catch (err) {
         console.error("Tasks not selected properly", err);
+        return [];
     }
 }
 

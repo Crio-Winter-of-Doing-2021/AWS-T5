@@ -1,4 +1,4 @@
-import { taskByID } from "@dbops/taskById";
+import { taskByID } from "../dbops/taskById";
 
 async function dbID(taskID: string) : Promise<boolean | void> {
     try {
@@ -6,7 +6,8 @@ async function dbID(taskID: string) : Promise<boolean | void> {
         if (pattern.test(taskID)) {
             const ret = await taskByID(taskID)
                 .then(res => {
-                    if (res.length) {
+                    // console.log(res);
+                    if (res.length > 0) {
                         return true;
                     } else {
                     return false;

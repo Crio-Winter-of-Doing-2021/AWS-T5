@@ -57,7 +57,7 @@ function parseLambdaARN(ARN: string) {
 function invokeLambda(ARN: string, Payload: string, accessKeyID: string, secretAccessKey: string ) {
     try {
         if (accessKeyIDValidate(accessKeyID)) {
-            const invokeSuccessPath = "../../invokeSuccess.txt";
+            const invokeSuccessPath = "../invokeSuccess.txt";
             // https://docs.aws.amazon.com/IAM/latest/APIReference/API_AccessKey.html
             const AWScredentials = new AWS.Credentials(accessKeyID, secretAccessKey);
             const parsedARN = parseLambdaARN(ARN);

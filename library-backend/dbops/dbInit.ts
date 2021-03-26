@@ -1,7 +1,7 @@
 import { Client } from "pg";
 import { connectionstring } from "./connectDB";
 
-async function dbInit() {
+async function dbInit() : Promise<void> {
     try {
         const client: Client = new Client(connectionstring);
         await client.connect();
@@ -29,5 +29,4 @@ async function dbInit() {
         console.error("Table not initialized properly");
     }
 }
-dbInit();
 export { dbInit };

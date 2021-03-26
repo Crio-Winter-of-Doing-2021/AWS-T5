@@ -1,6 +1,6 @@
 import { invokeLambda } from './AWSconnect/invokeLambda';
 import { triggerLambda } from './AWSconnect/triggerLambdaHTTP';
-import {dbInit} from './dbops/dbInit';
+import { dbInit } from './dbops/dbInit';
 interface invokeLambdaInterface {
     ARN: string,
     Payload: string,

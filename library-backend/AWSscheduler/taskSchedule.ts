@@ -1,11 +1,11 @@
-import { scheduleTask } from '@dbops/scheduleTask';
-import { ARNValidate } from '@validateData/ARN';
-import { accessKeyIDValidate } from '@validateData/accessKeyID';
-import { timestampValidate } from '@validateData/timestamp';
-import { triggerURLValidate } from '@validateData/triggerURL';
-import { runTask } from '@AWSscheduler/runTask';
+import { scheduleTask } from './../dbops/scheduleTask';
+import { ARNValidate } from './../validateData/ARN';
+import { accessKeyIDValidate } from './../validateData/accessKeyID';
+import { timestampValidate } from './../validateData/timestamp';
+import { triggerURLValidate } from './../validateData/triggerURL';
+import { scheduleNext } from './scheduleNext';
 
-async function taskSchedule(triggerURLOrARN: string, delay: number, acecssKeyID = "", secretAccessKey = ""): Promise<boolean> {
+async function taskSchedule(triggerURLOrARN: string, delay: number, accessKeyID = "", secretAccessKey = "", payload = ""): Promise<boolean> {
     
     delay = Math.floor(delay);
     if(delay <= 0) {
@@ -22,7 +22,7 @@ async function taskSchedule(triggerURLOrARN: string, delay: number, acecssKeyID 
         console.log('Invalid Time');
         return false;
     }
-    if(acecssKeyID === "")
+    if(accessKeyID === "")
     {
         if(!triggerURLValidate(triggerURLOrARN))
         {
@@ -37,16 +37,16 @@ async function taskSchedule(triggerURLOrARN: string, delay: number, acecssKeyID 
             console.log('Invalid ARN');
             return false;
         }
-        if(!accessKeyIDValidate(acecssKeyID))
+        if(!accessKeyIDValidate(accessKeyID))
         {
             console.log('Invalid Access Key ID');
             return false;
         }
     }
     try {
-        const id = scheduleTask(triggerURLOrARN, invoke_time, acecssKeyID, secretAccessKey)
+        const id = scheduleTask(triggerURLOrARN, invoke_time, accessKeyID, secretAccessKey, payload)
         .then(res => {
-            runTask();
+            scheduleNext();
             return res;
         });
         return id;

@@ -9,6 +9,7 @@
 import * as AWS  from "aws-sdk";
 import { Lambda } from  "@aws-sdk/client-lambda";
 // console.log(Object.getOwnPropertyNames(Lambda.prototype)); 
+import * as fs from "fs";
 
 import {accessKeyIDValidate} from '../validateData/accessKeyID'
 
@@ -56,6 +57,7 @@ function parseLambdaARN(ARN: string) {
 function invokeLambda(ARN: string, Payload: string, accessKeyID: string, secretAccessKey: string ) {
     try {
         if (accessKeyIDValidate(accessKeyID)) {
+            const invokeSuccessPath = "../../invokeSuccess.txt";
             // https://docs.aws.amazon.com/IAM/latest/APIReference/API_AccessKey.html
             const AWScredentials = new AWS.Credentials(accessKeyID, secretAccessKey);
             const parsedARN = parseLambdaARN(ARN);
@@ -78,9 +80,10 @@ function invokeLambda(ARN: string, Payload: string, accessKeyID: string, secretA
 
             lambda.invoke(invokeParams, function(err:unknown, data:unknown) {
                 if (err) {
-                    console.error(err); // an error occurred
-                } else {
-                    console.log(data);           // successful response
+                    fs.writeFileSync(invokeSuccessPath, "error");         // an error occurred
+                } 
+                if (data) {
+                    fs.writeFileSync(invokeSuccessPath, "success");     // successful response
                 }
             });
         } else {

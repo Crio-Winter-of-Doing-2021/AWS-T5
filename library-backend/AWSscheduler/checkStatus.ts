@@ -1,5 +1,5 @@
-import {checkTaskStatus} from './../dbops/checkTaskStatus';
-import {dbID} from './../validateData/dbID'
+import {checkTaskStatus} from '@dbops/checkTaskStatus';
+import {dbID} from '@validateData/dbID'
 
 async function checkStatus(id:string) : Promise<string> {
     return dbID(id)

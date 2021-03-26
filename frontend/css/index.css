@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:500');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:500');
+body {
+    background-color: #ffffff;
+    background-size: 9px 9px;
+    background-image: repeating-linear-gradient(45deg, #110765 0, #110765 0.9px, #ffffff 0, #ffffff 50%); 
+}
+.logo {
+    text-align: center;
+    margin-top: 25px;
+    /* margin-left: 10px; */
+}
+.logo-img {
+    /* display: inline; */
+    height: 100px;
+}
+.logout {
+    text-align: end;
+    margin-right: 40px;
+}
+.logout-button {
+    background-color: rgb(196, 5, 5);
+    /* padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px; */
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    border-style: none;
+    border-radius: 5px;
+}
+.logout-button:hover {
+    background-color: rgb(216, 27, 27);
+}
+/* .logout-button::selection {
+    border-style: none;
+} */
+.logo-text {
+    font-family: Roboto Mono;
+    font-size: 110px;
+    color: rgba(0, 0, 0, 0.664);
+    /* vertical-align: middle; */
+    display: inline;
+    margin-left: 20px;
+}
+.list-box {
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 50px;
+    height: 600px;
+    background-color: rgba(0, 0, 0, 0.801);
+    border-radius: 10px;
+    display: flex;
+}
+.list-left {
+    border-right: 3px solid rgba(7, 7, 7, 0.349);
+    height: 600px;
+    padding-right: 30px;
+}
+.create {
+    margin-top: 20px;
+    margin-left: 70px;
+}
+.create-button {
+    background-color: rgb(25, 180, 63);
+    color: white;
+    border-style: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor : pointer;
+}
+.create-button:hover {
+    background-color: rgb(54, 207, 92);
+}
+.list-title {
+    background-color: rgba(71, 71, 71, 0.651);
+    height: 450px;
+    width: 300px;
+    margin-top: 35px;
+    margin-left: 30px;
+    overflow-y:auto;
+    padding-top: 10px;
+}
+
+.list-text-wrapper {
+    cursor : pointer;
+    background-color: rgba(10, 17, 16, 0.678);
+    margin-right: 2px;
+    border-radius: 7px;
+    margin-top: 5px;
+}
+.list-text {
+    padding-left: 25px;
+    color: rgb(209, 209, 209);
+    font-size: 23px;
+    
+}
+.list-text-wrapper:hover {
+    background-color: rgb(15, 29, 24);
+}
+.title {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 37px;
+    font-family: Pangolin;
+    text-decoration: underline;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+   
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.712); 
+    border-radius: 10px;
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #050303;
+}
+.list-right {
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow-y: auto;
+}
+.right-text {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-right: 20px;
+    font-size: 25px;
+    color: rgb(199, 199, 199);
+    /* overflow-x: auto; */
+
+}
+.right-text-head {
+    margin-top: 7px;
+}
+@media only screen and (max-width: 1439px) {
+    .logo {
+        text-align: center;
+        margin-top: 50px;
+        /* margin-left: 10px; */
+    }
+    .logo-img {
+        /* display: inline; */
+        height: 30px;
+    }
+    .logo-text {
+        font-family: "Roboto Mono";
+        font-size: 40px;
+        color: rgba(0, 0, 0, 0.664);
+        /* vertical-align: middle; */
+        display: inline;
+        margin-left: 20px;
+    }
+    .logout {
+        text-align: end;
+        margin-right: 10px;
+    }
+    .logout-button {
+        background-color: rgb(196, 5, 5);
+        /* padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        padding-right: 10px; */
+        padding: 7px;
+        color: white;
+        cursor: pointer;
+        border-style: none;
+        border-radius: 5px;
+    }
+    .list-box {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 30px;
+        height: 100px;
+        background-color: rgba(0, 0, 0, 0.801);
+        border-radius: 10px;
+        display: unset;
+    }
+    .list-left {
+        border-right: none;
+        height: 400px;
+        padding-right: 2px;
+    }
+    .create {
+        margin-top: 20px;
+        margin-left: 70px;
+    }
+    .create-button {
+        background-color: rgb(25, 180, 63);
+        color: white;
+        border-style: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor : pointer;
+    }
+    .create-button:hover {
+        background-color: rgb(54, 207, 92);
+    }
+}

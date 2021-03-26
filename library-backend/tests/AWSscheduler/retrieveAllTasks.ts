@@ -1,4 +1,4 @@
-import { retrieveAllTasks } from "../../AWSscheduler/retrieveAllTasks"
+import { retrieveAllTasks } from "@AWSscheduler/retrieveAllTasks"
 
 retrieveAllTasks()
 .then(res => console.log(res))

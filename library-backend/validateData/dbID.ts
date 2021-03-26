@@ -1,4 +1,4 @@
-import { taskByID } from "../dbops/taskById";
+import { taskByID } from "@dbops/taskById";
 
 async function dbID(taskID: string) : Promise<boolean | void> {
     try {

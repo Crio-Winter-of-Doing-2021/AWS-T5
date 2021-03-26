@@ -5,7 +5,8 @@
  */
 
 
-import https from 'https';
+import * as https from 'https';
+import * as fs from 'fs';
 
 function parseTriggerURL(triggerURL: string): {
     hostname: string;
@@ -34,7 +35,7 @@ function triggerLambda(triggerURL: string, payloadData : unknown ): void {
     try {
         const payload = JSON.stringify(payloadData);
         const URLComponents = parseTriggerURL(triggerURL);
-
+        const responseFilePath = "../triggerResponse.txt";
         const options = {
             hostname: URLComponents.hostname,
             path: URLComponents.path,
@@ -46,12 +47,12 @@ function triggerLambda(triggerURL: string, payloadData : unknown ): void {
         }
         
         const req = https.request(options, res => {
-            console.log(`statusCode: ${res.statusCode}`)
+            if (res.statusCode)
+                fs.writeFileSync(responseFilePath, res.statusCode.toString());
         });
         req.on('error', error => {
             console.error(error);
         });
-        
         req.write(payload);
         req.end();
     } catch {

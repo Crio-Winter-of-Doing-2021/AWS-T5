@@ -6,13 +6,13 @@ async function dbID(taskID: string) : Promise<boolean | void> {
         if (pattern.test(taskID)) {
             const ret = await taskByID(taskID)
                 .then(res => {
-                    if (res.length > 0) {
+                    if (res.length) {
                         return true;
                     } else {
-                        return false;
+                    return false;
                     }
-                }).
-                catch(err => console.error("Task ID not queried properly", err));
+                })
+                .catch(err => console.error("Task ID not queried properly", err));
             return ret;
         } else {
             return false;

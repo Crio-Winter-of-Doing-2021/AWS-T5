@@ -597,10 +597,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.31.tgz#72286bd33d137aa0d152d47ec7c1762563d34055"
   integrity sha512-vFHy/ezP5qI0rFgJ7aQnjDXwAMrG0KqqIH7tQG5PPv3BWBayOPIQNBjVc/P6hhdZfMx51REc6tfDNXHUio893g==
 
-"@types/node@^14.14.32":
-  version "14.14.32"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.32.tgz#90c5c4a8d72bbbfe53033f122341343249183448"
-  integrity sha512-/Ctrftx/zp4m8JOujM5ZhwzlWLx22nbQJiVqz8/zE15gOeEW+uly3FSX4fGFpcfEvFzXcMCJwq9lGVWgyARXhg==
+"@types/node@^14.14.36":
+  version "14.14.36"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.36.tgz#5637905dbb15c30a33a3c65b9ef7c20e3c85ebad"
+  integrity sha512-kjivUwDJfIjngzbhooRnOLhGYz6oRFi+L+EpMjxroDYXwDw9lHrJJ43E+dJ6KAd3V3WxWAJ/qZE9XKYHhjPOFQ==
 
 "@types/pg@^7.14.10":
   version "7.14.11"
@@ -796,11 +796,6 @@ astral-regex@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-2.0.0.tgz#483143c567aeed4785759c0865786dc77d7d2e31"
   integrity sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==
-
-async-scheduler@^1.4.3:
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/async-scheduler/-/async-scheduler-1.4.3.tgz#c6e3cfa2d521e4da540dc7bdd4099982249c28cc"
-  integrity sha512-G1FKWBJUoiePALjKxpBvqGVSVHOYOXECMEshA9gzgXXpGP5L49+zNKIzX5qSTYb/lN+aQfYO3ELL6L/m7LOsgg==
 
 available-typed-arrays@^1.0.2:
   version "1.0.2"
@@ -1540,6 +1535,11 @@ http-cache-semantics@^4.0.0:
   resolved "https://registry.yarnpkg.com/http-cache-semantics/-/http-cache-semantics-4.1.0.tgz#49e91c5cbf36c9b94bcfcd71c23d5249ec74e390"
   integrity sha512-carPklcUh7ROWRK7Cv27RPtdhYhUsela/ue5/jKzjegVvXDqM2ILE9Q2BGn9JZJh1g87cp56su/FgQSzcWS8cQ==
 
+https@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/https/-/https-1.0.0.tgz#3c37c7ae1a8eeb966904a2ad1e975a194b7ed3a4"
+  integrity sha1-PDfHrhqO65ZpBKKtHpdaGUt+06Q=
+
 ieee754@1.1.13:
   version "1.1.13"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.13.tgz#ec168558e95aa181fd87d37f55c32bbcb6708b84"
@@ -1935,6 +1935,11 @@ node-schedule@^2.0.0:
     cron-parser "^3.1.0"
     long-timeout "0.1.1"
     sorted-array-functions "^1.3.0"
+
+node-worker-threads-pool@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/node-worker-threads-pool/-/node-worker-threads-pool-1.4.3.tgz#0c809df7f14f1e829e5f20a88357afafa5f30116"
+  integrity sha512-US55ZGzEDQY2oq8Bc33dFVNKGpx4KaCJqThMDomSsUeX8tMdp2eDjQ6OP0yFd1HTEuHuLqxXSTWC4eidEsbXlg==
 
 nodemon@^2.0.7:
   version "2.0.7"

@@ -1,7 +1,7 @@
 import { Client } from "pg";
 import { connectionstring } from "@dbops/connectDB";
 
-async function dbInit() {
+async function dbInit() : Promise<void> {
     try {
         const client: Client = new Client(connectionstring);
         await client.connect();
@@ -12,7 +12,8 @@ async function dbInit() {
                 status VARCHAR(128) NOT NULL,
                 accessKeyID VARCHAR(128) NOT NULL,
                 secretAccessKey VARCHAR(2048) NOT NULL,
-                invoke_time TIMESTAMP DEFAULT NOW()
+                invoke_time TIMESTAMP DEFAULT NOW(), 
+                payload varchar(10000) DEFAULT ''
                 );
             `,(err,res) => {
                 if(res)
@@ -28,5 +29,4 @@ async function dbInit() {
         console.error("Table not initialized properly");
     }
 }
-dbInit();
 export { dbInit };

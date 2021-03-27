@@ -4,64 +4,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/index.css">
     <title>AWS scheduler</title>
 </head>
 <body>
-    <div class="logo">
-        <img class="logo-img" src="./assets/logo1.png" alt="logo">
-        <div class="logo-text">SCHEDULER</div>
-    </div>
-    <div class="title">
-        <span class="title-text">Dashboard</span>
-        <div class="logout"><button class="logout-button">LogOut</button></div>
-    </div>
     
-    <div class="list-box">
-        <div class="list-left">
-            <div class="create">
-                <button class="create-button">Schedule New Lambda Function</button>
+    <div id="form">
+        
+    </div>
+    <div class="non-form">
+        <div class="logo">
+            <img class="logo-img" src="./assets/logo1.png" alt="logo">
+            <div class="logo-text">SCHEDULER</div>
+        </div>
+        <div class="title">
+            <span class="title-text">Dashboard</span>
+            <div class="logout"><button class="logout-button">LogOut</button></div>
+        </div>
+        
+        <div class="list-box">
+            <div class="list-left">
+                <div class="create">
+                    <button onclick="openform()" class="create-button">Schedule New Lambda Function</button>
+                </div>
+                <div class="list-title">
+                   <div class="list-text-wrapper1">
+                        <div class="list-text-wrapper">
+                            <div class="list-text">List 1</div>
+                        </div>
+                        <div class="list-text-wrapper">
+                            <div class="list-text">List 1</div>
+                        </div>
+                        <div class="list-text-wrapper">
+                            <div class="list-text">List 1</div>
+                        </div>
+                        <div class="list-text-wrapper">
+                            <div class="list-text">List 1</div>
+                        </div>
+                        <div class="list-text-wrapper">
+                            <div class="list-text">List 1</div>
+                        </div>
+                        <div class="list-text-wrapper">
+                            <div class="list-text">List 1</div>
+                        </div>
+                        <div class="list-text-wrapper">
+                            <div class="list-text">List 1</div>
+                        </div>
+                        <div class="list-text-wrapper">
+                            <div class="list-text">List 1</div>
+                        </div>
+                        <div class="list-text-wrapper">
+                            <div class="list-text">List 1</div>
+                        </div>
+                   </div>
+                </div>
             </div>
-            <div class="list-title">
-               <div class="list-text-wrapper1">
-                    <div class="list-text-wrapper">
-                        <div class="list-text">List 1</div>
-                    </div>
-                    <div class="list-text-wrapper">
-                        <div class="list-text">List 1</div>
-                    </div>
-                    <div class="list-text-wrapper">
-                        <div class="list-text">List 1</div>
-                    </div>
-                    <div class="list-text-wrapper">
-                        <div class="list-text">List 1</div>
-                    </div>
-                    <div class="list-text-wrapper">
-                        <div class="list-text">List 1</div>
-                    </div>
-                    <div class="list-text-wrapper">
-                        <div class="list-text">List 1</div>
-                    </div>
-                    <div class="list-text-wrapper">
-                        <div class="list-text">List 1</div>
-                    </div>
-                    <div class="list-text-wrapper">
-                        <div class="list-text">List 1</div>
-                    </div>
-                    <div class="list-text-wrapper">
-                        <div class="list-text">List 1</div>
-                    </div>
+            <div class="list-right">
+               <div class="right-text">
+                    <div class="right-text-head">Id : <span class="right-text-body"> 1</span></div>
+                    <div class="right-text-head">URL or ARN : https://www.google.com/jkhsdjkhdfshkjdshdfsdfhkjashjkdfhsdhfkahdfkjhasdkhfajksdhfhjhasdjkfhajksdhfkjashdfkjhasdkjfhaksjdhfashdfkhasdkjfhakjsdhfkajsdhfjkshdfjk<span class="right-text-body"> </span></div>
+                    <div class="right-text-head">Status : <span class="right-text-body"> Running </span></div>
+                    <div class="right-text-head">invoke time : <span class="right-text-body"> 15:15:1515</span></div>
+    
                </div>
             </div>
-        </div>
-        <div class="list-right">
-           <div class="right-text">
-                <div class="right-text-head">Id : <span class="right-text-body"> 1</span></div>
-                <div class="right-text-head">URL or ARN : https://www.google.com/jkhsdjkhdfshkjdshdfsdfhkjashjkdfhsdhfkahdfkjhasdkhfajksdhfhjhasdjkfhajksdhfkjashdfkjhasdkjfhaksjdhfashdfkhasdkjfhakjsdhfkajsdhfjkshdfjk<span class="right-text-body"> </span></div>
-                <div class="right-text-head">Status : <span class="right-text-body"> Running </span></div>
-                <div class="right-text-head">invoke time : <span class="right-text-body"> 15:15:1515</span></div>
-
-           </div>
         </div>
     </div>
     <script src="./script/index.js"></script>

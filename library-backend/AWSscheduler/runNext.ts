@@ -15,6 +15,7 @@ async function runNext(endTime: number) : Promise<void> {
             }
         } else {
             console.error("No latest task");
+            return process.exit(0);
         }
     })
     .catch(err => console.error("Error in getting next task to run", err));

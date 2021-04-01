@@ -1,9 +1,9 @@
 function closeform() {
-    console.log('closeform');
+    // console.log('closeform');
     document.getElementById('form').innerHTML='';
 }
 function openform() {
-    console.log('openform');
+    // console.log('openform');
     document.getElementById('form').innerHTML=`<div class="form-wrapper">
     <div class="close-btn">
         <span onclick="closeform()" class="fa fa-times"></span>
@@ -13,8 +13,9 @@ function openform() {
         <label>Name : <input type="text" class="input-text input-name"></label><br>
         <label>Trigger Url : <input type="text" class="input-text input-url"></label><br>
         <label>Payload Data : <input type="text" class="input-text input-data"></label><br>
-        <label>Invoke Time : <input type="datetime-local" class="input-text input-date"></label><br>
-        <button class="btn-submit">Submit</button>
+        <label>Delay( in ms ) : <input type="number" class="input-text input-date"></label><br>
+        <button class="btn-submit">Submit</button><br></br>
+        <span class="extra-text" id="extra-text"></span>
     </div>
 </div>`;
 }
@@ -68,7 +69,7 @@ function custom_list(status) {
     {
         if(dummy_data[i].Status==status)
         {
-            list_html = list_html + `<div onclick="showitem(${i})" class="list-text-wrapper">
+            list_html = list_html + `<div id="item${i}" onclick="showitem(${i})" class="list-text-wrapper">
                 <div class="list-text">${dummy_data[i].name}</div>
             </div>`;
             if(isfirst)
@@ -96,5 +97,6 @@ function showitem(index) {
     document.getElementById('list_item').innerHTML=`<div class="right-text-head">Id : <span class="right-text-body"> ${dummy_data[index].id}</span></div>
     <div class="right-text-head">URL or ARN : <span class="right-text-body">${dummy_data[index].url}</span></div>
     <div class="right-text-head">Status : <span class="right-text-body"> ${dummy_data[index].Status} </span></div>
-    <div class="right-text-head">invoke time : <span class="right-text-body"> ${dummy_data[index].invoke_time}</span></div>`;
+    <div class="right-text-head">invoke time : <span class="right-text-body"> ${dummy_data[index].invoke_time}</span></div>
+    <button class="cancel-button">Cancel</button>`;
 }

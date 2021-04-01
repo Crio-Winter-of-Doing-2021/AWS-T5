@@ -7,7 +7,6 @@ async function runNext(endTime: number) : Promise<void> {
         if (res.length > 0) {
             const task = res[0];
             const msTime = task.invoke_time.getTime();
-            console.log(task);
             if (msTime <= endTime) {
                 runTask(task.id.toString())
                 .then(res => runNext(endTime))

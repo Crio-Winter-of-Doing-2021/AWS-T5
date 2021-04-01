@@ -9,8 +9,7 @@
     <title>AWS scheduler</title>
 </head>
 <body>
-    
-    <div id="form">
+    <div id="form" class="form-animation">
         
     </div>
     <div class="non-form">
@@ -27,9 +26,16 @@
             <div class="list-left">
                 <div class="create">
                     <button onclick="openform()" class="create-button">Schedule New Lambda Function</button>
+                    <select id="option_select" onchange="optionchange()" class="dropdown-input" name="">
+                        <option class="dropdown-item">All</option>
+                        <option class="dropdown-item">Scheduled</option>
+                        <option class="dropdown-item">Canceled</option>
+                        <option class="dropdown-item">Completed</option>
+                        <option class="dropdown-item">Failed</option>
+                    </select>
                 </div>
                 <div class="list-title">
-                   <div class="list-text-wrapper1">
+                   <div id="list" class="list-text-wrapper1">
                         <div class="list-text-wrapper">
                             <div class="list-text">List 1</div>
                         </div>
@@ -61,13 +67,12 @@
                 </div>
             </div>
             <div class="list-right">
-               <div class="right-text">
+                <div id="list_item" class="right-text">
                     <div class="right-text-head">Id : <span class="right-text-body"> 1</span></div>
-                    <div class="right-text-head">URL or ARN : https://www.google.com/jkhsdjkhdfshkjdshdfsdfhkjashjkdfhsdhfkahdfkjhasdkhfajksdhfhjhasdjkfhajksdhfkjashdfkjhasdkjfhaksjdhfashdfkhasdkjfhakjsdhfkajsdhfjkshdfjk<span class="right-text-body"> </span></div>
+                    <div class="right-text-head">URL or ARN : <span class="right-text-body">https://www.google.com/jkhsdjkhdfshkjdshdfsdfhkjas</span></div>
                     <div class="right-text-head">Status : <span class="right-text-body"> Running </span></div>
                     <div class="right-text-head">invoke time : <span class="right-text-body"> 15:15:1515</span></div>
-    
-               </div>
+                </div>
             </div>
         </div>
     </div>

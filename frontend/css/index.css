@@ -59,6 +59,7 @@ body {
 .list-left {
     border-right: 3px solid rgba(7, 7, 7, 0.349);
     height: 600px;
+    width: 350px;
     padding-right: 30px;
 }
 .create {
@@ -75,6 +76,9 @@ body {
 }
 .create-button:hover {
     background-color: rgb(54, 207, 92);
+}
+.create-button:focus {
+    outline:none;
 }
 .list-title {
     background-color: rgba(71, 71, 71, 0.651);
@@ -192,7 +196,7 @@ body {
     height: 35px;
     background-color: transparent;
     /* box-sizing: border-box; */
-    border: 3px solid rgba(0, 0, 0, 0.452);
+    border: 3px solid rgba(83, 83, 83, 0.685);
     color: rgb(167, 167, 167);
     font-size: 22px;
     border-radius: 10px;
@@ -226,9 +230,33 @@ body {
     border-radius: 5px;
     width: 100px;
 }
+.btn-submit:focus {
+    outline: none;
+}
 .btn-submit:hover {
     background-color: rgb(54, 207, 92);
 }
+.dropdown-input {
+    margin-top: 30px;
+    background-color: rgba(0, 0, 0, 0.63);
+    border: none;
+    border-radius: 5px;
+    padding: 7px;
+    color: white;
+    cursor: pointer;
+}
+.dropdown-input:hover {
+    background-color: rgba(0, 0, 0, 0.822);
+
+}
+.dropdown-input:focus {
+    outline: none;
+}
+.dropdown-item {
+    font-size: 14px;
+    
+}
+
 
 @media only screen and (max-width: 1439px) {
     .logo {

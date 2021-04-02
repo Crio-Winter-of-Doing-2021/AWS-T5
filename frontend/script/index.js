@@ -55,7 +55,7 @@ function alllist() {
     let list_html = ``;
     for(let i=0;i<dummy_data.length;i++)
     {
-        list_html = list_html + `<div onclick="showitem(${i})" class="list-text-wrapper">
+        list_html = list_html + `<div id="item${i}" onclick="showitem(${i})" class="list-text-wrapper">
             <div class="list-text">${dummy_data[i].name}</div>
         </div>`;
     }

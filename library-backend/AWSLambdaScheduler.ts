@@ -1,6 +1,11 @@
 import { invokeLambda } from './AWSconnect/invokeLambda';
 import { triggerLambda } from './AWSconnect/triggerLambdaHTTP';
 import { dbInit } from './dbops/dbInit';
+import { taskSchedule } from './AWSscheduler/taskSchedule';
+import {cancelTask} from './AWSscheduler/cancelTask';
+import { checkStatus } from './AWSscheduler/checkStatus';
+import { retrieveAllTasks } from './AWSscheduler/retrieveAllTasks';
+import { retrieveTaskInstances } from './AWSscheduler/retrieveTaskInstances';
 interface invokeLambdaInterface {
     ARN: string,
     Payload: string,
@@ -41,23 +46,23 @@ class AWSLambdaScheduler {
     triggerLambda(obj: triggerLambdaInterface) {
         triggerLambda(obj.triggerURL,obj.payloadData);
     }
-    taskSchedule(obj: scheduleInterface) {
-        //taskSchedule logic
+    taskSchedule(URLorARN:string,delay:number,accessKeyID = "",secretAccessKey="",payload="") {
+        return taskSchedule(URLorARN,delay,accessKeyID,secretAccessKey,payload);
     }
-    cancel(obj: cancelInterface) {
-        //cancel logic
+    cancel(id:string) {
+        return cancelTask(id);
     }
-    checkStatus(obj : checkStatusInterface) {
-        //checkStatus logic
+    checkStatus(id:string) {
+        return checkStatus(id)
     }
     modify(obj :modifyInterface) {
         //modify logic
     }
-    retrieveTaskInstances(obj : taskInstancesInterface) {
-        //retrieveTaskInstances logic
+    retrieveTaskInstances(status:string) {
+        retrieveTaskInstances(status);
     }
     retrieveAllTasks() {
-        //retrieveAllTasks
+        retrieveAllTasks();
     }
 }
 export default AWSLambdaScheduler;

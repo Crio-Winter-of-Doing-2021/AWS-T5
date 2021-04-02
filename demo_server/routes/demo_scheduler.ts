@@ -10,7 +10,7 @@ router.get('/alltasks',async (req,res) => {
     catch(err) {
         console.log(err);
         res.sendStatus(500);
-    }
+    } 
 })
 
 

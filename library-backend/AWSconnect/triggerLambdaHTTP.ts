@@ -36,6 +36,7 @@ function triggerLambda(triggerURL: string, payloadData : unknown ): void {
         const payload = JSON.stringify(payloadData);
         const URLComponents = parseTriggerURL(triggerURL);
         const responseFilePath = "../triggerResponse.txt";
+        // console.log(process.cwd())
         const options = {
             hostname: URLComponents.hostname,
             path: URLComponents.path,

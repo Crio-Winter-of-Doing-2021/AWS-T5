@@ -9,6 +9,7 @@ async function runTask(taskID: string) : Promise<void> {
     try {
         const responseFilePath = "../triggerResponse.txt";
         const invokeSuccessPath = "../invokeSuccess.txt";
+        // console.log(process.cwd())
         dbID(taskID)
         .then(res => {
             if(res) {

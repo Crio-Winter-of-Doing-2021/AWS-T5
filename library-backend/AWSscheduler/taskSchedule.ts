@@ -12,7 +12,8 @@ async function taskSchedule(triggerURLOrARN: string, delay: number, accessKeyID 
         return false;
     }
     const curr_Date: Date = new Date();
-    curr_Date.setMilliseconds(curr_Date.getMilliseconds() + delay);
+    const timezoneDiff: number = 1000 * 60 * (curr_Date.getTimezoneOffset());
+    curr_Date.setMilliseconds(curr_Date.getMilliseconds() + delay - timezoneDiff);
     const invoke_time: string = curr_Date.toISOString();
     // console.log(invoke_time);
 

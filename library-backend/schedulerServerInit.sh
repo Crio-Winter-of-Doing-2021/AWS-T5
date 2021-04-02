@@ -9,7 +9,7 @@ initTime=$(ts-node -e "console.log(new Date().getTime());" )
 minTime=0
 
 while :
-do 
+do
     ts-node -e "import { runNext } from './AWSscheduler/runNext'; runNext(${initTime}); "
     currTime=$(ts-node -e "console.log(new Date().getTime());" )
     timeSleep=$((msTimeNextRun + initTime  - currTime))

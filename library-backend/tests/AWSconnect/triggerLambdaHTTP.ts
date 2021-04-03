@@ -1,6 +1,6 @@
 import { triggerLambda } from "../../AWSconnect/triggerLambdaHTTP";
 const triggerdata= {
-    triggerURL : "https://znhvn9olqk.execute-api.us-east-2.amazonaws.com/default/hello-test",
+    triggerURL : "https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa",
     payloadData : {}
 }
 triggerLambda(triggerdata.triggerURL, triggerdata.payloadData);

@@ -16,7 +16,7 @@ async function runNext(endTime: number) : Promise<void> {
                 return process.exit(0);
             }
         } else {
-            console.error("No latest task");
+            // console.error("No latest task");
             return process.exit(0);
         }
     })

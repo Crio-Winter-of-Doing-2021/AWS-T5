@@ -10,11 +10,11 @@ function openform() {
     </div>
     <div class="form">
         <div class="form-title">Schedule New Lambda Function</div>
-        <label>Name : <input type="text" class="input-text input-name"></label><br>
-        <label>Trigger Url : <input type="text" class="input-text input-url"></label><br>
-        <label>Payload Data : <input type="text" class="input-text input-data"></label><br>
-        <label>Delay( in ms ) : <input type="number" class="input-text input-date"></label><br>
-        <button class="btn-submit">Submit</button><br></br>
+        <label>Name : <input type="text" id="input-name" class="input-text input-name"></label><br>
+        <label>Trigger Url : <input type="text" id="input-url" class="input-text input-url"></label><br>
+        <label>Payload Data : <input type="text" id="input-payload" class="input-text input-data"></label><br>
+        <label>Delay( in ms ) : <input type="number" id="input-delay" class="input-text input-date"></label><br>
+        <button onclick="taskSchedule()" class="btn-submit">Submit</button><br></br>
         <span class="extra-text" id="extra-text"></span>
     </div>
 </div>`;
@@ -67,7 +67,7 @@ function custom_list(status) {
     let list_html=``;
     for(let i=0;i<dummy_data.length;i++)
     {
-        if(dummy_data[i].Status==status)
+        if(dummy_data[i].status==status)
         {
             list_html = list_html + `<div id="item${i}" onclick="showitem(${i})" class="list-text-wrapper">
                 <div class="list-text">${dummy_data[i].name}</div>
@@ -92,11 +92,102 @@ function optionchange() {
         custom_list(option);
     }
 }
-alllist();
 function showitem(index) {
     document.getElementById('list_item').innerHTML=`<div class="right-text-head">Id : <span class="right-text-body"> ${dummy_data[index].id}</span></div>
-    <div class="right-text-head">URL or ARN : <span class="right-text-body">${dummy_data[index].url}</span></div>
-    <div class="right-text-head">Status : <span class="right-text-body"> ${dummy_data[index].Status} </span></div>
+    <div class="right-text-head">URL or ARN : <span class="right-text-body">${dummy_data[index].urlorarn}</span></div>
+    <div class="right-text-head">Status : <span class="right-text-body"> ${dummy_data[index].status} </span></div>
     <div class="right-text-head">invoke time : <span class="right-text-body"> ${dummy_data[index].invoke_time}</span></div>
-    <button class="cancel-button">Cancel</button>`;
+    <button class="cancel-button" onclick="canceltask(${dummy_data[index].id})">Cancel</button>`;
 }
+
+function getitem() {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET','http://localhost:8081/alltasks');
+    xhr.responseType='json';
+    xhr.onload = () => {
+        console.log(xhr.response);
+        dummy_data=xhr.response;
+        alllist();
+    }
+    xhr.send();
+}
+function taskSchedule() {
+    // console.log('Hello');
+    document.getElementById('extra-text').innerText="";
+    let name=document.getElementById('input-name').value;
+    let url=document.getElementById('input-url').value;
+    let payload = document.getElementById('input-payload').value;
+    let delay = document.getElementById('input-delay').value;
+    if(name==="")
+    {
+        document.getElementById('extra-text').innerText="Please Enter Name";
+    }
+    else if(url==="")
+    {
+        document.getElementById('extra-text').innerText="Please Enter URL";
+    }
+    else if(delay==="")
+    {
+        document.getElementById('extra-text').innerText="Please Enter Delay";
+    }
+    else {
+        console.log(url);
+        let data = {
+            "name" : name,
+            "url" : url,
+            "delay" : delay,
+            "payload" : payload
+        }
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST','http://localhost:8081/scheduletask',true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.responseType = 'json';
+        xhr.onload = () => {
+            if(xhr.status<300)
+            {
+                if(xhr.response)
+                {
+                    alert("Task Scheduled");
+                    window.location.reload();
+                }
+                else
+                {
+                    alert("Task Scheduling Failed !! Try again Later");
+                }
+            }
+            else
+            {
+                alert("Task Scheduling Failed !! Try again Later");
+            }
+        }
+        xhr.send(JSON.stringify(data));
+    }
+}
+function canceltask(id) {
+    let data ={
+        id
+    }
+    let xhr=new XMLHttpRequest();
+    xhr.open('POST','http://localhost:8081/canceltask',true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.responseType='json';
+    xhr.onload = () => {
+        if(xhr.status<300)
+        {
+            if(xhr.response)
+            {
+                alert('Task Cancelled');
+                window.location.reload();
+            }
+            else{
+                alert("Task Cancelling Failed !! Try again Later");
+            }
+        }
+        else
+        {
+            alert("Task Cancelling Failed !! Try again Later");
+        }
+    }
+    xhr.send(JSON.stringify(data));
+}
+getitem();

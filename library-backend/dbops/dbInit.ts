@@ -10,6 +10,7 @@ async function dbInit() : Promise<void> {
                 id SERIAL PRIMARY KEY,
                 URLorARN VARCHAR(2048) NOT NULL,
                 status VARCHAR(128) NOT NULL,
+                name VARCHAR(128) NOT NULL,
                 accessKeyID VARCHAR(128) NOT NULL,
                 secretAccessKey VARCHAR(2048) NOT NULL,
                 invoke_time TIMESTAMP DEFAULT NOW(), 

@@ -27,7 +27,7 @@ router.post('/scheduletask', async (req,res) => {
             payload = req.body.payload;
         }
 
-        let result = await taskSchedule(req.body.url,req.body.delay,"","",payload);
+        let result = await taskSchedule(req.body.url,req.body.delay,req.body.name,"","",payload);
         res.status(200).send(result);
     }
     catch(err) {

@@ -1,5 +1,6 @@
 import { Client } from "pg";
 import { connectionstring } from "./connectDB";
+import { backupDB } from "./backupDB";
 
 async function dbInit() : Promise<void> {
     try {
@@ -19,6 +20,7 @@ async function dbInit() : Promise<void> {
             `,(err,res) => {
                 if(res)
                 {
+                    backupDB();
                     console.log('Table Initialized !!');
                 }
                 else {

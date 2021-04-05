@@ -1,5 +1,6 @@
 import { Client } from "pg";
 import { connectionstring } from "./connectDB";
+import { backupDB } from "./backupDB";
 
 async function scheduleTask(triggerURLOrARN: string,  invoke_time: string,name : string, accessKeyID = "", secretAccessKey = "", payload = "") {
     try {
@@ -12,6 +13,7 @@ async function scheduleTask(triggerURLOrARN: string,  invoke_time: string,name :
             `).then(res => {
                 return res.rows[0];
             }).catch(err => console.log("Query Error" + err));
+        backupDB();
         return ret;
     } catch (err) {
         console.error("Task not scheduled properly", err);

@@ -1,5 +1,6 @@
 import { Client } from "pg";
 import { connectionstring } from "./connectDB";
+import { backupDB } from "./backupDB";
 
 async function customQuery(query: string) {
     try {
@@ -10,6 +11,7 @@ async function customQuery(query: string) {
             `).then(res => {
                 return res;
             }).catch(err => console.log("Query Error" + err));
+        backupDB();
         return ret;
     } catch (err) {
         console.error("Custom Query Not Invoked", err);

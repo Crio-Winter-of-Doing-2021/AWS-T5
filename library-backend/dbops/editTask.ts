@@ -1,5 +1,6 @@
 import { Client } from "pg";
 import { connectionstring } from "./connectDB";
+import { backupDB } from "./backupDB";
 
 async function editInvokeTime(taskID: string, newInvokeTime: string) : Promise<boolean> {
     try {
@@ -14,6 +15,7 @@ async function editInvokeTime(taskID: string, newInvokeTime: string) : Promise<b
             }).catch(err => {
                 return false;
             });
+        backupDB();
         return ret;
     } catch (err) {
         console.error("Task not edited properly", err);
@@ -34,6 +36,7 @@ async function editStatus(taskID: string, newStatus: string) : Promise<boolean> 
             }).catch(err => {
                 return false;
             });
+        backupDB();
         return ret;
     } catch (err) {
         console.error("Task not edited properly", err);

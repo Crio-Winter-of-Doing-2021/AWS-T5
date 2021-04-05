@@ -1,8 +1,9 @@
 import express from 'express';
 import { retrieveAllTasks } from './../../library-backend/AWSscheduler/retrieveAllTasks';
-import { retrieveTaskInstances } from './../../library-backend/AWSscheduler/retrieveTaskInstances';
 import { taskSchedule } from './../../library-backend/AWSscheduler/taskSchedule';
 import { cancelTask } from './../../library-backend/AWSscheduler/cancelTask';
+import { modifyTaskTime } from './../../library-backend/AWSscheduler/modifyTask';
+import { stringify } from 'querystring';
 const router = express.Router();
 
 router.get('/alltasks',async (req,res) => {
@@ -49,7 +50,9 @@ router.post('/canceltask', async (req,res) => {
 
 router.post('/modifytask', async (req,res) => {
     try {
-        
+        modifyTaskTime(req.body.id,req.body.delay).then(ress => {
+            res.status(200).send(ress);
+        })
     }
     catch(err) {
         console.log(err);

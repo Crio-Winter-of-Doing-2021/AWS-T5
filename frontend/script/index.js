@@ -190,4 +190,10 @@ function canceltask(id) {
     }
     xhr.send(JSON.stringify(data));
 }
+function fetchlogin() {
+    fetch('http://localhost:8081/success')
+    .then(res => res.json())
+    .then(data => console.log(data));
+}
+fetchlogin();
 getitem();

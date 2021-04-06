@@ -4,3 +4,4 @@ node_modules
 *secrets.json
 *.txt
 *.sql
+*secrets.ts

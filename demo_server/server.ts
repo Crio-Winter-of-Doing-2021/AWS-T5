@@ -4,9 +4,12 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import demo_scheduler from './routes/demo_scheduler';
 import auth_router from './routes/auth_router';
+import {initTable} from './dbops';
 
 
 const app=express();
+
+initTable();
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended : false}));

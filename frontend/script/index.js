@@ -102,8 +102,13 @@ function showitem(index) {
 
 function getitem() {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET','http://localhost:8081/alltasks');
+    let id=localStorage.getItem('id');
+    let email=localStorage.getItem('email');
+    let userid = id+email;
+    let requrl = 'http://localhost:8081/alltasks/' + userid;
+    xhr.open('GET',requrl);
     xhr.responseType='json';
+    xhr.setRequestHeader("Content-type", "application/json");
     xhr.onload = () => {
         console.log(xhr.response);
         dummy_data=xhr.response;
@@ -133,6 +138,7 @@ function taskSchedule() {
     else {
         console.log(url);
         let data = {
+            "userid" : localStorage.getItem('id')+localStorage.getItem('email'),
             "name" : name,
             "url" : url,
             "delay" : delay,
@@ -143,8 +149,10 @@ function taskSchedule() {
         xhr.setRequestHeader("Content-type", "application/json");
         xhr.responseType = 'json';
         xhr.onload = () => {
+            console.log(xhr.status)
             if(xhr.status<300)
             {
+                console.log(xhr.response);
                 if(xhr.response)
                 {
                     alert("Task Scheduled");
@@ -190,10 +198,19 @@ function canceltask(id) {
     }
     xhr.send(JSON.stringify(data));
 }
-function fetchlogin() {
-    fetch('http://localhost:8081/success')
-    .then(res => res.json())
-    .then(data => console.log(data));
+
+function checklogin() {
+    if(localStorage.getItem('id')===null)
+    {
+        window.location.replace("http://localhost:3000/login.html");
+    }
+    else
+    {
+        getitem();
+    }
 }
-fetchlogin();
-getitem();
+function logout() {
+    localStorage.clear();
+    window.location.replace("http://localhost:3000/login.html");
+}
+checklogin();

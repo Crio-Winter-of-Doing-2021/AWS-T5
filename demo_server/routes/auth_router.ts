@@ -52,7 +52,7 @@ router.get('/auth/google/callback',
 passport.authenticate('google', { failureRedirect: '/error' }),
 function(req, res) {
   // Authentication Successful
-  res.redirect('http://localhost:3000/index.html');
+  res.redirect('http://localhost:3000/middleware.html');
 });
 
 

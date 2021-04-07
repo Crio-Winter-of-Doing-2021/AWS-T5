@@ -21,10 +21,10 @@ app.use(session({
     resave : false,
     saveUninitialized : true,
     secret : 'ganganchura'
-}))
+}));
 
 app.use('/',demo_scheduler);
 app.use('/',auth_router);
-const PORT = 8081
+const PORT = 8081;
 
 app.listen(PORT,() =>console.log(`Server Started on ${PORT}`));

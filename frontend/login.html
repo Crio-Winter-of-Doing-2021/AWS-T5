@@ -8,6 +8,7 @@
     <title>AWS Scheduler Login</title>
 </head>
 <body>
+    <script src="./script/login.js"></script>
     <div class="logo">
         <img class="logo-img" src="./assets/logo1.png" alt="logo">
         <div class="logo-text">SCHEDULER</div>
@@ -17,16 +18,15 @@
     </div>
     <div class="content">
         <img class="img-title" src="./assets/schedule.png" alt="schedule">
-        <a href="http://localhost:8081/auth/google" class="login">
+        <div class="login">
             <div class="login-text">Login/SignUp</div>
-            <div class="google-btn">
+            <div onclick="javascript:window.location.href='http://localhost:8081/auth/google'" class="google-btn">
                 <div class="google-icon-wrapper">
                   <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
                 </div>
                 <p class="btn-text"><b>Sign in with google</b></p>
-              </div>
-        </a>
+            </div>
+        </div>
     </div>
-    <script src="./script/script.js"></script>
 </body>
 </html>

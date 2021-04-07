@@ -10,7 +10,8 @@ minTime=0
 
 while :
 do
-    ts-node -e "import { runNext } from './AWSscheduler/runNext'; runNext(${initTime}); "
+    ts-node -e "import { triggerNext } from './AWSconnect/triggerNext'; triggerNext(${initTime}); 
+setTimeout((function() {return process.exit(0);}), 5000); "
     currTime=$(ts-node -e "console.log(new Date().getTime());" )
     timeSleep=$((msTimeNextRun + initTime  - currTime))
     initTime=$((initTime + msTimeNextRun))

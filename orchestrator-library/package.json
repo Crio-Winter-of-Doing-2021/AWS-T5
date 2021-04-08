@@ -1,0 +1,17 @@
+{
+  "name": "orchestrator-library",
+  "version": "1.0.0",
+  "description": "The library backend for AWS Lambda Orchestrator functionalities",
+  "main": "index.js",
+  "author": "GOSHROW",
+  "license": "MIT",
+  "dependencies": {
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.37",
+    "@types/pg": "^7.14.11",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  }
+}

@@ -25,7 +25,7 @@ import { tasksLessThanTime } from '../../dbops/tasksLessThanTime'
 // .then(res => console.log(res))
 // .catch(err => console.error(err))
 
-// setInvoke('https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa, https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa, https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa, https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa', 'same urls', 10000, '{}')
+// setInvoke('https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa| https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa', 'same urls', 10000, '{}')
 // .then(res => console.log(res))
 // .catch(err => console.error(err))
 

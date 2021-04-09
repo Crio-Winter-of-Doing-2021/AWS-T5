@@ -25,31 +25,24 @@ let dummy_data = [{
     "url" : "asdhka",
     "Status" : "Scheduled",
     "invoke_time" : "15:15:1515"
-},{
-    "id" : 2,
-    "name" : "schedule 2",
-    "url" : "asdhkaaa",
-    "Status" : "Canceled",
-    "invoke_time" : "15:15:1515"
-},{
-    "id" : 3,
-    "name" : "schedule 3",
-    "url" : "asdhka",
-    "Status" : "Completed",
-    "invoke_time" : "15:15:1515"
-},{
-    "id" : 4,
-    "name" : "schedule 4",
-    "url" : "asdhka",
-    "Status" : "Failed",
-    "invoke_time" : "15:15a:1515"
-},{
-    "id" : 5,
-    "name" : "schedule 5",
-    "url" : "asdhka",
-    "Status" : "Scheduled",
-    "invoke_time" : "15:15:1515"
 }];
+function openmodifyform(index) {
+    console.log(index);
+    document.getElementById('form').innerHTML=`<div class="form-wrapper">
+    <div class="close-btn">
+        <span onclick="closeform()" class="fa fa-times"></span>
+    </div>
+    <div class="form">
+        <div class="form-title">Schedule New Lambda Function</div>
+        <label>Id : <input type="text" id="input-id" class="input-text input-id" value="${dummy_data[index].id}" readonly></label><br>
+        <label>Name : <input type="text" id="input-name" class="input-text input-name" value="${dummy_data[index].name}" readonly></label><br>
+        <label>Delay( in ms ) : <input type="number" id="input-delay-modify" class="input-text input-date"></label><br>
+        <button onclick="modifytask(${dummy_data[index].id})" class="btn-submit">Submit</button><br></br>
+        <span class="extra-text" id="extra-text"></span>
+    </div>
+</div>`;
+}
+
 function alllist() {
     document.getElementById('list').innerHTML='';
     let list_html = ``;
@@ -97,7 +90,8 @@ function showitem(index) {
     <div class="right-text-head">URL or ARN : <span class="right-text-body">${dummy_data[index].urlorarn}</span></div>
     <div class="right-text-head">Status : <span class="right-text-body"> ${dummy_data[index].status} </span></div>
     <div class="right-text-head">invoke time : <span class="right-text-body"> ${dummy_data[index].invoke_time}</span></div>
-    <button class="cancel-button" onclick="canceltask(${dummy_data[index].id})">Cancel</button>`;
+    <button class="cancel-button" onclick="canceltask(${dummy_data[index].id})">Cancel</button>
+    <button class="modify-button" onclick="openmodifyform(${index})">Modify</button>`;
 }
 
 function getitem() {
@@ -194,6 +188,36 @@ function canceltask(id) {
         else
         {
             alert("Task Cancelling Failed !! Try again Later");
+        }
+    }
+    xhr.send(JSON.stringify(data));
+}
+
+function modifytask(id) {
+    let delay = document.getElementById('input-delay-modify').value;
+    let data = {
+        id,
+        delay
+    }
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST','http://localhost:8081/modifytask',true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.responseType='json';
+    xhr.onload = () => {
+        if(xhr.status<300)
+        {
+            if(xhr.response)
+            {
+                alert('Task Modified');
+                window.location.reload();
+            }
+            else{
+                alert("Task Modification Failed !! Try again Later");
+            }
+        }
+        else
+        {
+            alert("Task Modification Failed !! Try again Later");
         }
     }
     xhr.send(JSON.stringify(data));

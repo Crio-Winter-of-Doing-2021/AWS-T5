@@ -1,6 +1,10 @@
 function validStatus(status: string): boolean {
     const statusList: string[] = ["Scheduled", "Canceled", "Failed", "Running", "Completed"]
-    return statusList.includes(status)
+    if (statusList.includes(status)) {
+        return true;
+    }
+    const pattern = /^Failed at test: \d*$/gs;
+    return pattern.test(status)
 }
 
 function validURL(url: string): boolean {

@@ -10,7 +10,6 @@ import { getTasks, editTask, scheduleOrchestration } from '../../orchestrator/in
 // .then(res => console.log(res))
 // .catch(err => console.error(err))
 
-
 // editTask({taskID: 1, invoke_delay: 10000})
 // .then(res => console.log(res))
 // .catch(err => console.error(err))
@@ -18,6 +17,9 @@ import { getTasks, editTask, scheduleOrchestration } from '../../orchestrator/in
 // .then(res => console.log(res))
 // .catch(err => console.error(err))
 
-scheduleOrchestration('https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa| https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa', 'testing CRUD interface', 10000, '{}')
+scheduleOrchestration('https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://32n6l76elf.execute-api.us-east-1.amazonaws.com/default/true| https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa', 'testing CRUD interface', 10000, '{}')
+.then(res => console.log(res))
+.catch(err => console.error(err))
+scheduleOrchestration('https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://bjj4mseb90.execute-api.us-east-1.amazonaws.com/default/false| https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa', 'testing CRUD interface', 10000, '{}')
 .then(res => console.log(res))
 .catch(err => console.error(err))

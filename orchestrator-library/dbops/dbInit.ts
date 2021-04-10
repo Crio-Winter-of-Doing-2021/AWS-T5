@@ -11,7 +11,7 @@ async function dbInit() : Promise<void> {
                 id SERIAL PRIMARY KEY,
                 orchestratorList VARCHAR(16384) NOT NULL,
                 name varchar(512) default '',
-                status varchar(16),
+                status varchar(32) default 'Scheduled',
                 invoke_time TIMESTAMP DEFAULT NOW(), 
                 payload varchar(16384) DEFAULT ''
                 );

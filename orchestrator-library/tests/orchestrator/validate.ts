@@ -1,7 +1,7 @@
 import { validStatus, validOrchestratorList, validName, validPayload } from '../../orchestrator/validate'
 
 const shouldBeTrue = {
-    status: 'Scheduled',
+    status: 'Failed at test: 667',
     orchestratorList: 'https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa| https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa', 
     name: 'same urls', 
     payload: '{}',

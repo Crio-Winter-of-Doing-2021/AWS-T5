@@ -1,6 +1,7 @@
 import { exec } from 'child_process'
 import { editStatus } from '../dbops/modifyTask'
 import fs from 'fs'
+import { getDefaultSettings } from 'node:http2'
 
 function triggerLambda(task: { id: string; orchestratorlist: string; payload: string; }): void {
     editStatus(task.id, 'Running')
@@ -24,9 +25,11 @@ function triggerLambda(task: { id: string; orchestratorlist: string; payload: st
             exec(curlStatement(testLambda, task.payload), (error, stdout, stderr) => {
                 if (error) {
                     console.log(`error: ${error.message}`);
+                    editStatus(task.id, "Failed");
+                    fs.writeFileSync(passConditionPath, "false", {flag: 'w+'})
                 } 
                 if (stdout) {
-                    if( stdout == "true" ) {
+                    if( stdout.toLowerCase() == '\"true\"' ) {
                         exec(curlStatement(successLambda, task.payload), (error, stdout, stderr) => {
                             if (error) {
                                 console.log(`error: ${error.message}`);
@@ -34,7 +37,7 @@ function triggerLambda(task: { id: string; orchestratorlist: string; payload: st
                         });
                     } else {
                         fs.writeFileSync(passConditionPath, "false", {flag: 'w+'})
-                        editStatus(task.id, 'Failed')
+                        editStatus(task.id, `Failed at test: ${Math.floor(i / 3) + 1}`)
                         exec(curlStatement(failureLambda, task.payload), (error, stdout, stderr) => {
                             if (error) {
                                 console.log(`error: ${error.message}`);

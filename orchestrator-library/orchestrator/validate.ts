@@ -13,7 +13,7 @@ function validOrchestratorList(orchestratorList: string): boolean {
         return false;
     }
     orchestratorList = orchestratorList.replace(/\s+/g, '');
-    const toCheckURLs: string[] = orchestratorList.split('|')
+    const toCheckURLs: string[] = orchestratorList.split('|');
     if ( toCheckURLs.length % 3 != 1 ) {
         return false
     }

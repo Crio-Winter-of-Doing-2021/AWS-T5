@@ -18,6 +18,6 @@ import { getTasks, editTask, scheduleOrchestration } from '../../orchestrator/in
 // .then(res => console.log(res))
 // .catch(err => console.error(err))
 
-// scheduleOrchestration('https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa| https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa', 'testing CRUD interface', 10000, '{}')
-// .then(res => console.log(res))
-// .catch(err => console.error(err))
+scheduleOrchestration('https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa| https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa', 'testing CRUD interface', 10000, '{}')
+.then(res => console.log(res))
+.catch(err => console.error(err))

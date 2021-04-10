@@ -1,7 +1,7 @@
 import { Client } from "pg";
 import { connectionstring } from "./connectDB";
 
-async function tasksLessThanTime(endTime: number) : Promise<Array<{id: string, orchestratorList: string, payload: string}>> {
+async function tasksLessThanTime(endTime: number) : Promise<Array<{id: string, orchestratorlist: string, payload: string}>> {
     try {
         const client: Client = new Client(connectionstring);
         await client.connect()

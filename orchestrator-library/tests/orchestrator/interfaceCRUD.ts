@@ -23,3 +23,4 @@ scheduleOrchestration('https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/de
 scheduleOrchestration('https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://bjj4mseb90.execute-api.us-east-1.amazonaws.com/default/false| https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa|https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa', 'testing CRUD interface', 10000, '{}')
 .then(res => console.log(res))
 .catch(err => console.error(err))
+console.log(getTasks({}));

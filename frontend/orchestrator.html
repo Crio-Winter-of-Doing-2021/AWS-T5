@@ -5,31 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="./css/index.css">
-    <title>AWS scheduler</title>
+    <link rel="stylesheet" href="./css/orchestrator.css">
+    <title>AWS Orchestrator</title>
 </head>
 <body>
-    <script src="./script/index.js"></script>
+    <script src="./script/orchestrator.js"></script>
     <div id="form" class="form-animation">
         
     </div>
     <div class="non-form">
         <div class="logo">
             <!-- <img class="logo-img" src="./assets/logo1.png" alt="logo"> -->
-            <div class="logo-text">AWS SCHEDULER</div>
+            <div class="logo-text">AWS ORCHESTRATOR</div>
         </div>
         <div class="title">
             <span class="title-text">Dashboard</span>
         </div>
         <div class="buttons-top">
-            <button onclick="orchestrator()" class="orchestrator-button">Orchestrator</button>
+            <button onclick="scheduler()" class="orchestrator-button">Scheduler</button>
             <button onclick="logout()" class="logout-button">LogOut</button>
         </div>
         
         <div class="list-box">
             <div class="list-left">
                 <div class="create">
-                    <button onclick="openform()" class="create-button">Schedule New Lambda Function</button>
+                    <button onclick="openform()" class="create-button">Schedule New Orchestration</button>
                     <select id="option_select" onchange="optionchange()" class="dropdown-input" name="">
                         <option class="dropdown-item">All</option>
                         <option class="dropdown-item">Scheduled</option>
@@ -51,5 +51,6 @@
             </div>
         </div>
     </div>
+    <script src="./script/orchestrator1.js"></script>
 </body>
 </html>

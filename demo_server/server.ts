@@ -5,6 +5,7 @@ import session from 'express-session';
 import demo_scheduler from './routes/demo_scheduler';
 import auth_router from './routes/auth_router';
 import {initTable} from './dbops';
+import demo_orchestrator from './routes/demo_orchestrator';
 
 
 const app=express();
@@ -24,6 +25,7 @@ app.use(session({
 }));
 
 app.use('/',demo_scheduler);
+app.use('/',demo_orchestrator);
 app.use('/',auth_router);
 const PORT = 8081;
 

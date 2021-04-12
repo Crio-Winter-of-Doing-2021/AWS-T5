@@ -62,6 +62,21 @@ body {
     border-style: none;
     border-radius: 5px;
 }
+.urladd {
+    display: inline-block;
+}
+.add-btn {
+    margin-left: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+.fa-plus {
+    color: white;
+}
+.fa-plus:hover {
+    color: rgb(158, 158, 158);
+}
+
 .logout-button:hover {
     background-color: rgb(216, 27, 27);
 }
@@ -164,11 +179,13 @@ body {
     background: #050303;
 }
 .list-right {
+    width: 1120px;
     overflow-x: auto;
     white-space: nowrap;
     overflow-y: auto;
 }
 .right-text {
+    /* width: 100%; */
     margin-top: 20px;
     margin-left: 20px;
     padding-right: 20px;
@@ -190,6 +207,7 @@ body {
     top: 0px;
     left: 0px;
     /* margin-top: 0px; */
+    overflow-y: auto;
 }
 .close-btn {
     margin-right: 5px;
@@ -241,19 +259,29 @@ body {
     border: 3px solid rgba(0, 0, 0, 0.699);
 }
 .input-url {
-    margin-left: 44px;
+    margin-left: 72px;
 }
+.input-url-1 {
+    margin-left: 16px;
+}
+.input-url-2 {
+    margin-left: 34px;
+}
+.input-url-3 {
+    margin-left: 52px;
+}
+
 .input-data {
-    margin-left: 10px;
+    margin-left: 36px;
 }
-/* .input-date {
-    margin-left: 14px;
-} */
+.input-date {
+    margin-left: 26px;
+}
 .input-id {
     margin-left: 150px;
 }
 .input-name {
-    margin-left: 100px;
+    margin-left: 126px;
 }
 .extra-text {
     color: red;
@@ -336,69 +364,4 @@ body {
 
 .modify-button:focus {
     outline:none;
-}
-
-@media only screen and (max-width: 1439px) {
-    .logo {
-        text-align: center;
-        margin-top: 50px;
-        /* margin-left: 10px; */
-    }
-    .logo-img {
-        /* display: inline; */
-        height: 30px;
-    }
-    .logo-text {
-        font-family: "Roboto Mono";
-        font-size: 40px;
-        color: rgba(0, 0, 0, 0.664);
-        /* vertical-align: middle; */
-        display: inline;
-        margin-left: 20px;
-    }
-    .logout {
-        text-align: end;
-        margin-right: 10px;
-    }
-    .logout-button {
-        background-color: rgb(196, 5, 5);
-        /* padding-top: 5px;
-        padding-bottom: 5px;
-        padding-left: 10px;
-        padding-right: 10px; */
-        padding: 7px;
-        color: white;
-        cursor: pointer;
-        border-style: none;
-        border-radius: 5px;
-    }
-    .list-box {
-        margin-left: 20px;
-        margin-right: 20px;
-        margin-top: 30px;
-        height: 100px;
-        background-color: rgba(0, 0, 0, 0.801);
-        border-radius: 10px;
-        display: unset;
-    }
-    .list-left {
-        border-right: none;
-        height: 400px;
-        padding-right: 2px;
-    }
-    .create {
-        margin-top: 20px;
-        margin-left: 70px;
-    }
-    .create-button {
-        background-color: rgb(25, 180, 63);
-        color: white;
-        border-style: none;
-        padding: 10px;
-        border-radius: 5px;
-        cursor : pointer;
-    }
-    .create-button:hover {
-        background-color: rgb(54, 207, 92);
-    }
 }

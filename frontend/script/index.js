@@ -33,7 +33,7 @@ function openmodifyform(index) {
         <span onclick="closeform()" class="fa fa-times"></span>
     </div>
     <div class="form">
-        <div class="form-title">Schedule New Lambda Function</div>
+        <div class="form-title">Schedule New Orchestration</div>
         <label>Id : <input type="text" id="input-id" class="input-text input-id" value="${dummy_data[index].id}" readonly></label><br>
         <label>Name : <input type="text" id="input-name" class="input-text input-name" value="${dummy_data[index].name}" readonly></label><br>
         <label>Delay( in ms ) : <input type="number" id="input-delay-modify" class="input-text input-date"></label><br>
@@ -87,7 +87,7 @@ function optionchange() {
 }
 function showitem(index) {
     document.getElementById('list_item').innerHTML=`<div class="right-text-head">Id : <span class="right-text-body"> ${dummy_data[index].id}</span></div>
-    <div class="right-text-head">URL or ARN : <span class="right-text-body">${dummy_data[index].urlorarn}</span></div>
+    <div class="right-text-head">URL : <span class="right-text-body">${dummy_data[index].urlorarn}</span></div>
     <div class="right-text-head">Status : <span class="right-text-body"> ${dummy_data[index].status} </span></div>
     <div class="right-text-head">invoke time : <span class="right-text-body"> ${dummy_data[index].invoke_time}</span></div>
     <button class="cancel-button" onclick="canceltask(${dummy_data[index].id})">Cancel</button>
@@ -143,7 +143,7 @@ function taskSchedule() {
         xhr.setRequestHeader("Content-type", "application/json");
         xhr.responseType = 'json';
         xhr.onload = () => {
-            console.log(xhr.status)
+            // console.log(xhr.status)
             if(xhr.status<300)
             {
                 console.log(xhr.response);
@@ -232,6 +232,9 @@ function checklogin() {
     {
         getitem();
     }
+}
+function orchestrator() {
+    window.location.replace('http://localhost:3000/orchestrator.html');
 }
 function logout() {
     localStorage.clear();

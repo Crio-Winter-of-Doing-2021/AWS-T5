@@ -43,16 +43,16 @@ router.post('/orchestrate',async (req,res) => {
 })
 
 router.post('/cancelorchestration',async (req,res) => {
-    let id = req.body.id;
-    console.log(id);
     try {
+        let id = req.body.id;
+        // console.log(id);
         let result = await getTasks({status : 'Scheduled'});
         let res1;
         let temp=false;
         for(let i=0;i<result.length;i++)
         {
-            console.log('hello');
-            console.log(result[i].id);
+            // console.log('hello');
+            // console.log(result[i].id);
             if(result[i].id==id)
             {
                 // console.log('hello1');
@@ -77,6 +77,39 @@ router.post('/cancelorchestration',async (req,res) => {
     }
 })
 
-
+router.post('/modifydelay',async (req,res) => {
+    try {
+        let id=req.body.id;
+        let delay = req.body.delay;
+        let result = await getTasks({status : 'Scheduled'});
+        let res1;
+        let temp=false;
+        for(let i=0;i<result.length;i++)
+        {
+            // console.log('hello');
+            // console.log(result[i].id);
+            if(result[i].id==id)
+            {
+                // console.log('hello1');
+                temp=true;
+                res1 = await editTask({taskID : id,invoke_delay : delay});
+                break;
+            }
+        }
+        // res.status(500).send(false);
+        if(temp)
+        {
+            res.status(200).send(res1);
+        }
+        else
+        {
+            res.status(500).send(false);
+        }
+    }
+    catch(err) {
+        console.log("Error : " + err);
+        res.sendStatus(500);
+    }
+})
 
 export default router;

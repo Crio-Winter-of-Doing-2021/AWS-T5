@@ -365,3 +365,6 @@ body {
 .modify-button:focus {
     outline:none;
 }
+.input-id-modify {
+    margin-left: 178px;
+}

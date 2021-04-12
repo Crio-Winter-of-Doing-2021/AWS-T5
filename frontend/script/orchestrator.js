@@ -150,6 +150,54 @@ function cancelorchestration(id)
     }
     xhr.send(JSON.stringify(data));
 }
+function openmodifyform(index) {
+    console.log(index);
+    document.getElementById('form').innerHTML=`<div class="form-wrapper">
+    <div class="close-btn">
+        <span onclick="closeform()" class="fa fa-times"></span>
+    </div>
+    <div class="form">
+        <div class="form-title">Modify Lambda function</div>
+        <label>Id : <input type="text" id="input-id" class="input-text input-id-modify" value="${data[index].id}" readonly></label><br>
+        <label>Name : <input type="text" id="input-name" class="input-text input-name" value="${data[index].name}" readonly></label><br>
+        <label>Delay( in ms ) : <input type="number" id="input-delay-modify" class="input-text input-date"></label><br>
+        <button onclick="modifyorchestrator(${data[index].id})" class="btn-submit">Submit</button><br></br>
+        <span class="extra-text" id="extra-text"></span>
+    </div>
+</div>`;
+}
+
+function modifyorchestrator(id) {
+    let delay = document.getElementById('input-delay-modify').value;
+    let data = {
+        id,
+        delay
+    }
+    let xhr=new XMLHttpRequest();
+    xhr.open('POST','http://localhost:8081/modifydelay',true);
+    xhr.setRequestHeader("Content-type","application/json");
+    xhr.responseType = 'json';
+    xhr.onload = () => {
+        if(xhr.status<300)
+        {
+            console.log(xhr.response);
+            if(xhr.response)
+            {
+                alert("Orchestration Modified");
+                window.location.reload();
+            }
+            else
+            {
+                alert("Orchestration Modification Failed !! Try again Later");
+            }
+        }
+        else
+        {
+            alert("Orchestration Modification Failed !! Try again Later");
+        }
+    }
+    xhr.send(JSON.stringify(data));
+}
 
 function closeform() {
     // console.log('closeform');

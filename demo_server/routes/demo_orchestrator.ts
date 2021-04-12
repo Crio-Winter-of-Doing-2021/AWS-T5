@@ -1,11 +1,25 @@
 import express from 'express';
 import {getTasks,editTask , scheduleOrchestration} from './../../orchestrator-library/orchestrator/interfaceCRUD'
+import {insertdata1,retrievedata1} from './../dbops1';
 
 const router = express.Router();
 
-router.get('/getorchetration', async (req,res) => {
+router.get('/getorchetration/:userid', async (req,res) => {
     try {
-        let result = await getTasks({});
+        let res1 = await getTasks({});
+        let result : Array<{id:string,orchestratorlist:string,name:string,status:string,invoke_time:string,payload:string}>=[];
+        let res2=await retrievedata1(req.params.userid);
+        for(let i=0;i<res2.length;i++)
+        {
+            for(let j=0;j<res1.length;j++)
+            {
+                if(res1[j].id==res2[i].id)
+                {
+                    result.push(res1[j]);
+                }
+            }
+        }
+        // console.log(result);
         res.status(200).send(result);
     }
     catch(err) {
@@ -27,12 +41,14 @@ router.post('/orchestrate',async (req,res) => {
         console.log(typeof(req.body.delay))
         console.log(req.body.url +"@" +req.body.name+"$"+req.body.delay );
         // console.log('hello1')
-        const result = await scheduleOrchestration(req.body.url,req.body.name,req.body.delay,payload)
+        const result :number = await scheduleOrchestration(req.body.url,req.body.name,req.body.delay,payload)
         // console.log('hello2')
         // console.log(result);
         let data = {
             result
         }
+        insertdata1(result.toString(),req.body.userid);
+        // console.log(result);
         res.status(200).send(data);
         
     }

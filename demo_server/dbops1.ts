@@ -10,37 +10,37 @@ const pool = new Pool({
 
 const connectionString = "postgresql://postgres:postgres@localhost:5432/postgres";
 
-async function initTable() {
+async function initTable1() {
     const client = new Client(connectionString);
     await client.connect();
     await client.query(
-        `CREATE TABLE IF NOT EXISTS userdb(
+        `CREATE TABLE IF NOT EXISTS userdb1(
             id VARCHAR(200) NOT NULL,
             userid VARCHAR(600) NOT NULL
         );`
     ,(err,res) => {
         if(res) {
-            console.log('User DB Started');
+            console.log('User DB 1 Started');
         }
         else {
-            console.log("User DB Error : "+ err);
+            console.log("User DB 1 Error : "+ err);
         }
     })
 }
 
-async function insertdata(id : string , userid : string) {
+async function insertdata1(id : string , userid : string) {
     const client = new Client(connectionString);
     try {
         await client.connect();
 
         await client.query(
-            `INSERT INTO userdb(id,userid) 
+            `INSERT INTO userdb1(id,userid) 
             VALUES ('${id}','${userid}');`
         )
         return true;
     }
     catch(err) {
-        console.log("User DB Error : " + err);
+        console.log("User DB 1 Error : " + err);
         return false;
     }
     finally {
@@ -48,17 +48,17 @@ async function insertdata(id : string , userid : string) {
     }
 }
 
-async function retrievedata(userid :string)  {
+async function retrievedata1(userid :string)  {
     const client = new Client(connectionString);
     try {
         await client.connect();
         let res = await client.query(
-            `SELECT id FROM userdb WHERE userid='${userid}';`
+            `SELECT id FROM userdb1 WHERE userid='${userid}';`
         )
         return res.rows;
     }
     catch(err) {
-        console.log("User DB Error : " + err);
+        console.log("User DB 1 Error : " + err);
         return [];
     }
     finally {
@@ -67,4 +67,4 @@ async function retrievedata(userid :string)  {
 }
 
 
-export {initTable,insertdata,retrievedata};
+export {initTable1,insertdata1,retrievedata1};

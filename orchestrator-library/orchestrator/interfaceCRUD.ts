@@ -41,7 +41,7 @@ function editTask(inParams: editArgs) {
     return new Promise(() => {return {}});
 }
 
-function scheduleOrchestration(orchestratorList: string, name: string, delay: number, payload: string) {
+function scheduleOrchestration(orchestratorList: string, name: string, delay: number, payload: string) : Promise<number> {
     const parsedDelay: number = Math.abs(Math.floor(delay));
     if (validOrchestratorList(orchestratorList) && validName(name) && validPayload(payload)) {
         return setInvoke(orchestratorList, name, delay, payload)

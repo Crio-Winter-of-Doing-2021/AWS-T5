@@ -40,7 +40,10 @@ function showitem(index) {
 
 function getitem() {
     let xhr = new XMLHttpRequest();
-    let requrl = 'http://localhost:8081/getorchetration';
+    let id=localStorage.getItem('id');
+    let email = localStorage.getItem('email');
+    let userid = id+email;
+    let requrl = 'http://localhost:8081/getorchetration/'+userid;
     xhr.open('GET',requrl);
     xhr.responseType='json';
     xhr.setRequestHeader("Content-type", "application/json");

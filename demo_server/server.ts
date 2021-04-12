@@ -5,12 +5,14 @@ import session from 'express-session';
 import demo_scheduler from './routes/demo_scheduler';
 import auth_router from './routes/auth_router';
 import {initTable} from './dbops';
+import {initTable1} from './dbops1';
 import demo_orchestrator from './routes/demo_orchestrator';
 
 
 const app=express();
 
 initTable();
+initTable1();
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended : false}));

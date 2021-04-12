@@ -18,7 +18,7 @@ function showitem(index) {
     <div class="right-text-head">Status : <span class="right-text-body"> ${data[index].status} </span></div>
     <div class="right-text-head">invoke time : <span class="right-text-body"> ${data[index].invoke_time}</span></div>
     <div id="url-list"></div>
-    <button class="cancel-button" onclick="canceltask(${data[index].id})">Cancel</button>
+    <button class="cancel-button" onclick="cancelorchestration(${data[index].id})">Cancel</button>
     <button class="modify-button" onclick="openmodifyform(${index})">Modify</button>`;
     let urllist = data[index].orchestratorlist;
     // console.log(urllist)
@@ -51,5 +51,15 @@ function getitem() {
     }
     xhr.send();
 }
+function checklogin() {
+    if(localStorage.getItem('id')===null)
+    {
+        window.location.replace("http://localhost:3000/login.html");
+    }
+    else
+    {
+        getitem();
+    }
+}
 
-getitem();
+checklogin();

@@ -120,6 +120,37 @@ function scheduleorchestrator() {
     xhr.send(JSON.stringify(data));
 }
 
+function cancelorchestration(id)
+{
+    let data = {
+        id
+    }
+    let xhr=new XMLHttpRequest();
+    xhr.open('POST','http://localhost:8081/cancelorchestration',true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.responseType = 'json';
+    xhr.onload = () => {
+        console.log(xhr.response);
+        if(xhr.status<300)
+        {
+            
+            if(xhr.response)
+            {
+                alert('Task Cancelled');
+                window.location.reload();
+            }
+            else{
+                alert("Task Cancelling Failed !! Try again Later");
+            }
+        }
+        else
+        {
+            alert("Task Cancelling Failed !! Try again Later");
+        }
+    }
+    xhr.send(JSON.stringify(data));
+}
+
 function closeform() {
     // console.log('closeform');
     document.getElementById('form').innerHTML='';

@@ -33,7 +33,7 @@ function openmodifyform(index) {
         <span onclick="closeform()" class="fa fa-times"></span>
     </div>
     <div class="form">
-        <div class="form-title">Schedule New Orchestration</div>
+        <div class="form-title">Modify Lambda function</div>
         <label>Id : <input type="text" id="input-id" class="input-text input-id" value="${dummy_data[index].id}" readonly></label><br>
         <label>Name : <input type="text" id="input-name" class="input-text input-name" value="${dummy_data[index].name}" readonly></label><br>
         <label>Delay( in ms ) : <input type="number" id="input-delay-modify" class="input-text input-date"></label><br>

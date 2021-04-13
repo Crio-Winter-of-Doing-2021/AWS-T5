@@ -17,6 +17,7 @@ function parseLambdaARN(ARN: string) {
     try {
         // https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
         const ARNComponents: string[] = ARN.split(":");
+        // console.log(process.cwd())
         if(( ARNComponents.length == 7 || ARNComponents.length == 8 ) && ARNComponents[0] == "arn" && ARNComponents[1] == "aws" && ARNComponents[2] == "lambda" && ARNComponents[5] == "function") {
             const region: string = ARNComponents[3];
             const accountID: string = ARNComponents[4]; // might need for validating credentials

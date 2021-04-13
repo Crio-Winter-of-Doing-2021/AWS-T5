@@ -7,7 +7,7 @@ async function checkStatus(id:string) : Promise<string> {
         if (res == true) { 
             return checkTaskStatus(id)
             .then(res => {
-                return res;
+                return res.status;
             });
         } else {
             console.error("ID not valid");

@@ -7,8 +7,8 @@ import * as fs from 'fs';
 
 async function runTask(taskID: string) : Promise<void> {
     try {
-        const responseFilePath = "../triggerResponse.txt";
         const invokeSuccessPath = "../invokeSuccess.txt";
+        // console.log(process.cwd())
         dbID(taskID)
         .then(res => {
             if(res) {
@@ -26,12 +26,7 @@ async function runTask(taskID: string) : Promise<void> {
                         }
                     } else {
                         editStatus(taskID, "Running");
-                        triggerLambda(task.urlorarn, task.payload);
-                        if ((parseInt(fs.readFileSync(responseFilePath, 'utf-8'))) < 400) {
-                            editStatus(taskID, "Completed");
-                        } else {
-                            editStatus(taskID, "Failed");
-                        }
+                        triggerLambda(taskID, task.urlorarn, task.payload);
                     }
                 });
             } else {

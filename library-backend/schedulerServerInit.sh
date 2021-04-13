@@ -1,16 +1,17 @@
 #! /bin/bash
-touch ./invokeSuccess.txt
-touch ./triggerResponse.txt
+touch ../invokeSuccess.txt
+touch ../triggerResponse.txt
 
 ts-node -e "import { dbInit } from './dbops/dbInit'; dbInit();" &
 sleep 5
-msTimeNextRun=3000
+msTimeNextRun=20000
 initTime=$(ts-node -e "console.log(new Date().getTime());" )
 minTime=0
 
 while :
-do 
-    ts-node -e "import { runNext } from './AWSscheduler/runNext'; runNext(${initTime}); "
+do
+    ts-node -e "import { triggerNext } from './AWSconnect/triggerNext'; triggerNext(${initTime}); 
+setTimeout((function() {return process.exit(0);}), 5000); "
     currTime=$(ts-node -e "console.log(new Date().getTime());" )
     timeSleep=$((msTimeNextRun + initTime  - currTime))
     initTime=$((initTime + msTimeNextRun))

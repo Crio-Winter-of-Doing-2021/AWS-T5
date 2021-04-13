@@ -9,17 +9,21 @@
     <title>AWS scheduler</title>
 </head>
 <body>
+    <script src="./script/index.js"></script>
     <div id="form" class="form-animation">
         
     </div>
     <div class="non-form">
         <div class="logo">
-            <img class="logo-img" src="./assets/logo1.png" alt="logo">
-            <div class="logo-text">SCHEDULER</div>
+            <!-- <img class="logo-img" src="./assets/logo1.png" alt="logo"> -->
+            <div class="logo-text">AWS SCHEDULER</div>
         </div>
         <div class="title">
             <span class="title-text">Dashboard</span>
-            <div class="logout"><button class="logout-button">LogOut</button></div>
+        </div>
+        <div class="buttons-top">
+            <button onclick="orchestrator()" class="orchestrator-button">Orchestrator</button>
+            <button onclick="logout()" class="logout-button">LogOut</button>
         </div>
         
         <div class="list-box">
@@ -36,26 +40,16 @@
                 </div>
                 <div class="list-title">
                    <div id="list" class="list-text-wrapper1">
-                        <div class="list-text-wrapper">
-                            <div class="list-text">List 1</div>
-                        </div>
-                        <div class="list-text-wrapper">
-                            <div class="list-text">List 1</div>
-                        </div>
+                        
                    </div>
                 </div>
             </div>
             <div class="list-right">
                 <div id="list_item" class="right-text">
-                    <div class="right-text-head">Id : <span class="right-text-body"> 1</span></div>
-                    <div class="right-text-head">URL or ARN : <span class="right-text-body">https://www.google.com/jkhsdjkhdfshkjdshdfsdfhkjas</span></div>
-                    <div class="right-text-head">Status : <span class="right-text-body"> Running </span></div>
-                    <div class="right-text-head">invoke time : <span class="right-text-body"> 15:15:1515</span></div>
-                    <button class="cancel-button">Cancel</button>
+                    
                 </div>
             </div>
         </div>
     </div>
-    <script src="./script/index.js"></script>
 </body>
 </html>

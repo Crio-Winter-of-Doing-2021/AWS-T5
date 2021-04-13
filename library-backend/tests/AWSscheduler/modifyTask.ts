@@ -7,9 +7,9 @@ async function modifyStatusTest(id: string, status: string) : Promise<void>{
 }
 modifyStatusTest("2", "Failed");
 
-async function modifyTimeTest(id: string, timestamp: string) : Promise<void>{
+async function modifyTimeTest(id: string, timestamp: number) : Promise<void>{
     await modifyTaskTime(id, timestamp)
     .then(res => console.log(res))
     .catch(err => console.error(err));
 }
-modifyTimeTest("2", "2028-09-22T14:01:54.9571247Z");
+modifyTimeTest("2", 10000);

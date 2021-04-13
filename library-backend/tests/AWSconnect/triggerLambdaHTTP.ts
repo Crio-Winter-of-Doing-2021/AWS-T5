@@ -1,9 +1,10 @@
 import { triggerLambda } from "../../AWSconnect/triggerLambdaHTTP";
 const triggerdata= {
-    triggerURL : "https://znhvn9olqk.execute-api.us-east-2.amazonaws.com/default/hello-test",
-    payloadData : {}
+    id : "1",
+    urlorarn : "https://sbe5rde8ug.execute-api.us-east-1.amazonaws.com/default/aaa",
+    payload : "{}"
 }
-triggerLambda(triggerdata.triggerURL, triggerdata.payloadData);
+triggerLambda(triggerdata);
 // Any Response Code, means the test has been passed. 
 // Current URL has been removed as a trigger. Might respond 500.
 // Ensure Open Access to a valid URL.

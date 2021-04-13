@@ -3,61 +3,30 @@
  * Get the Trigger by "Add Trigger" on your function console.
  * To avoid open access triggers ( hence saving costs ), use invokeLambda.ts
  */
+ 
+ import { exec } from 'child_process';
+ import {editStatus} from '../dbops/editTask'
 
-
-import * as https from 'https';
-import * as fs from 'fs';
-
-function parseTriggerURL(triggerURL: string): {
-    hostname: string;
-    path: string;
-} {
-    // automatically upgrades to HTTPS URL, if need be, since AWS will comply
-
-    const pattern = /^((http|https):\/\/)/;
-    if(!pattern.test(triggerURL)) {
-        triggerURL = "https://" + triggerURL;
-    }
-    const splitURL: string[] = triggerURL.split('/');
-    const hostname: string = splitURL[2];
-    let urlPath = "/";
-    if (splitURL.length > 2) { 
-        urlPath += splitURL.slice(3, splitURL.length).join('/');
-    }
-
-    return {
-        "hostname": hostname,
-        "path": urlPath,
-    }
-}
-
-function triggerLambda(triggerURL: string, payloadData : unknown ): void {
-    try {
-        const payload = JSON.stringify(payloadData);
-        const URLComponents = parseTriggerURL(triggerURL);
-        const responseFilePath = "../triggerResponse.txt";
-        const options = {
-            hostname: URLComponents.hostname,
-            path: URLComponents.path,
-            method: 'GET',  
-            headers: {
-                'Content-Type': 'application/json',
-                'Content-Length': payload.length,
+ function triggerLambda(task: {id: string, urlorarn: string, payload: string}): void {
+    editStatus(task.id.toString(), 'Running')
+    const curlStatement =  `curl -Li -X POST -H 'Content-Type: application/json' -d '${task.payload}' ${task.urlorarn} | head -n 1 | cut -d$' ' -f2`
+    exec(curlStatement, (error, stdout, stderr) => {
+        // console.log(curlStatement)
+        if (error) {
+            console.log(`error: ${error.message}`);
+        }
+        if (stderr) {
+            // console.log(`stderr: ${stderr}`);
+        }
+        if (stdout) {
+            if(Number(stdout) < 400){
+                console.log(task.id.toString())
+                editStatus(task.id.toString(), 'Completed')
+            } else {
+                editStatus(task.id.toString(), 'Failed')
             }
         }
-        
-        const req = https.request(options, res => {
-            if (res.statusCode)
-                fs.writeFileSync(responseFilePath, res.statusCode.toString());
-        });
-        req.on('error', error => {
-            console.error(error);
-        });
-        req.write(payload);
-        req.end();
-    } catch {
-        console.error("Problem in Triggering Lambda");
-    }
-}
-
-export { triggerLambda }
+    });
+ }
+ 
+ export {triggerLambda}

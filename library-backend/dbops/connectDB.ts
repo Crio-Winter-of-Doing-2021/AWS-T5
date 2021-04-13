@@ -10,6 +10,6 @@ const pool: Pool = new Pool({
     max : 50
 });
 
-const connectionstring: string = "postgresql://postgres:postgres@localhost:5432/postgres";
+const connectionstring = "postgresql://postgres:postgres@localhost:5432/postgres";
 
 export {pool, connectionstring}

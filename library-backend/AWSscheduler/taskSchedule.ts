@@ -4,7 +4,7 @@ import { accessKeyIDValidate } from './../validateData/accessKeyID';
 import { timestampValidate } from './../validateData/timestamp';
 import { triggerURLValidate } from './../validateData/triggerURL';
 
-async function taskSchedule(triggerURLOrARN: string, delay: number, accessKeyID = "", secretAccessKey = "", payload = ""): Promise<boolean> {
+async function taskSchedule(triggerURLOrARN: string, delay: number, name = "", accessKeyID = "", secretAccessKey = "", payload = "{}"): Promise<any> {
     
     delay = Math.floor(delay);
     if(delay <= 0) {
@@ -12,7 +12,8 @@ async function taskSchedule(triggerURLOrARN: string, delay: number, accessKeyID 
         return false;
     }
     const curr_Date: Date = new Date();
-    curr_Date.setMilliseconds(curr_Date.getMilliseconds() + delay);
+    const timezoneDiff: number = 1000 * 60 * (curr_Date.getTimezoneOffset());
+    curr_Date.setMilliseconds(curr_Date.getMilliseconds() + delay - timezoneDiff);
     const invoke_time: string = curr_Date.toISOString();
     // console.log(invoke_time);
 
@@ -43,7 +44,7 @@ async function taskSchedule(triggerURLOrARN: string, delay: number, accessKeyID 
         }
     }
     try {
-        const id = scheduleTask(triggerURLOrARN, invoke_time, accessKeyID, secretAccessKey, payload)
+        const id = scheduleTask(triggerURLOrARN, invoke_time , name, accessKeyID, secretAccessKey, payload)
         .then(res => {
             return res;
         });
